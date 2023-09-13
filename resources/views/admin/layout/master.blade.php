@@ -12,6 +12,7 @@
 
 @include('admin.layout.style')
 @include('admin.layout.script')
+
 </head>
 
 <body>
