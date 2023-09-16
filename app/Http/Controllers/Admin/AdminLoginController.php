@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Mail\WebsiteMail;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdminLoginController extends Controller
 {
@@ -14,6 +17,27 @@ class AdminLoginController extends Controller
     }
     public function forget_password(){
         return view('admin.forget-password');
+    }
+    public function forget_password_submit(Request $request){
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+       $admin_data = Admin::where('email',$request->email)->first();
+        if(!$admin_data){
+            return redirect()->back()->with('error','Email address is not found!');
+        }
+        $token = hash('sha256',time());
+        $admin_data->token = $token;
+        $admin_data->update();
+
+        $reser_link = url('admin/reset_password/'.$token.'/'.$request->email);
+        $subject = 'reser password';
+        $message = 'Please click on the following links: <br>';
+        $message .= '<a href="'.$reser_link.'">Click here!</a>';
+
+        Mail::to($request->email)->send(new WebsiteMail($subject,$message));
+        return redirect()->route('admin_login')->with('success','Please check your email and follow the steps there!');
     }
     public function login_submit(Request $request){
         $request->validate([

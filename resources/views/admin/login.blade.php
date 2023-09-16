@@ -28,18 +28,27 @@
                             </div>
                             <div class="card-body card-body-auth">
                                 <form method="POST" action="{{ route('admin_login_submit') }}">
+                                    @if(session()->get('success'))
+                                     <div class="text-success">{{ session()->get('success') }}</div>
+                                    @endif
                                     @csrf
                                     <div class="form-group">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address" value="{{ old('email') }}" autofocus>
                                         @error('email')
                                             <div class="alert text-danger">{{ $message }}</div>
                                         @enderror
+                                        @if(session()->get('error'))
+                                             <div class="text-danger">{{ session()->get('error') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="Password">
                                         @error('password')
                                             <div class="alert text-danger">{{ $message }}</div>
                                         @enderror
+                                        @if (session()->get('error'))
+                                            <div class="text-danger">{{ session()->get('error') }}</div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
@@ -63,8 +72,7 @@
     </div>
 </div>
 
-<script src="dist/js/scripts.js"></script>
-<script src="dist/js/custom.js"></script>
+@include('admin.layout.footer_script')
 
 </body>
 </html>
