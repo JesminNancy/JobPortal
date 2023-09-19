@@ -47,6 +47,5 @@ class AdminProfileController extends Controller
         $admin_data->update();
 
         return redirect()->back()->with('success','Profile is changed successfully');
-
     }
 }
