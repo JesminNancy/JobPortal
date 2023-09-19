@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Front\FrontHomeController;
@@ -25,8 +26,10 @@ Route::post('/admin/reset_password_submit',[AdminLoginController::class,'reset_p
 /*....Admin with Middleware......*/
 
 Route::middleware(['admin:admin'])->group(function(){
-    Route::get('/admin/home',[AdminDashboardController::class,'index'])->name('admin_home')->middleware('admin:admin');
-    Route::get('/admin/edit_profile',[AdminProfileController::class,'index'])->name('admin_profile')->middleware('admin:admin');
-    Route::post('/admin/edit_profile_submit',[AdminProfileController::class,'profile_submit'])->name('admin_profile_submit')->middleware('admin:admin');
+    Route::get('/admin/home',[AdminDashboardController::class,'index'])->name('admin_home');
+    Route::get('/admin/edit_profile',[AdminProfileController::class,'index'])->name('admin_profile');
+    Route::post('/admin/edit_profile_submit',[AdminProfileController::class,'profile_submit'])->name('admin_profile_submit');
+    Route::get('/admin/home_page',[AdminHomePageController::class,'index'])->name('admin_home_page');
+    Route::post('/admin/home_page/update',[AdminHomePageController::class,'update'])->name('admin_home_page_update');
 });
 

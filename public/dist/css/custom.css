@@ -411,3 +411,9 @@ hr.invoice-above-table {
 .was-validated .form-control:invalid {
     border-color: #dc3545!important;
 }
+.nav-pills .nav-link
+{
+    background-color: #ffc473;
+    margin-top: 5px;
+    color: #fff;
+}
