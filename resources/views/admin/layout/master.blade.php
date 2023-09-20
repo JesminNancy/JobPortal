@@ -29,6 +29,7 @@
             <section class="section">
                 <div class="section-header">
                     <h1>@yield('heading')</h1>
+                    @yield('button')
                 </div>
                 @yield('main_content')
             </section>

@@ -9,16 +9,25 @@
         </div>
 
         <ul class="sidebar-menu">
+            <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="active"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
-
-            <li class="nav-item dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Page Settings</span></a>
+            <li class="nav-item dropdown">
+                <a href="{{ Request::is('admin/home_page') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
                 <ul class="dropdown-menu">
-                    <li class="active"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fas fa-angle-right"></i> Home</a></li>
-                    <li class=""><a class="nav-link" href="{{ route('terms') }}"><i class="fas fa-angle-right"></i> Terms</a></li>
+                    <li class="{{ Request::is('admin/home_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="{{ Request::is('terms') ? 'active' : '' }}"><a class="nav-link" href="{{ route('terms') }}"><i class="fas fa-angle-right"></i> Terms</a></li>
                 </ul>
             </li>
+
+
+            <li class="nav-item dropdown">
+                <a href="{{ Request::is('admin/job_category/view') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Job Section</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/job_category/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category_view') }}"><i class="fas fa-angle-right"></i> Job Category</a></li>
+                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Job Location</a></li>
+                </ul>
+            </li>
+
 
             <li class=""><a class="nav-link" href="setting.html"><i class="fas fa-hand-point-right"></i> <span>Setting</span></a></li>
 

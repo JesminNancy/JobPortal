@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('heading','Edit Profile')
+@section('heading','Home Page Content')
 
 @section('main_content')
 <div class="section-body">
@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="form-label">Background</label>
-                                                    <input type="file" class="form-control mt_10" name="background" >
+                                                    <input type="file" class="form-control mt_10" name="backgroud" value="{{ $home_page->backgroud }}" >
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="form-label"></label>
