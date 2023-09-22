@@ -7,14 +7,19 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                        <div class="row">
+                    <form action="{{ route('admin_home_page_update') }}" method="post">
+                        @csrf
+                        <div class="row custom-tab">
                             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active" id="v-1-tab" data-toggle="pill" href="#v-1" role="tab" aria-controls="v-1" aria-selected="true">
                                         Search
                                     </a>
                                     <a class="nav-link" id="v-2-tab" data-toggle="pill" href="#v-2" role="tab" aria-controls="v-2" aria-selected="false">
-                                        Category
+                                        Job Category
+                                    </a>
+                                    <a class="nav-link" id="v-3-tab" data-toggle="pill" href="#v-3" role="tab" aria-controls="v-3" aria-selected="false">
+                                        Why Choose Us
                                     </a>
                                 </div>
                             </div>
@@ -22,8 +27,6 @@
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="pt_0 tab-pane fade show active" id="v-1" role="tabpanel" aria-labelledby="v-1-tab">
                                         <!-- Search Section Start -->
-                                        <form action="{{ route('admin_home_page_update') }}" method="post">
-                                            @csrf
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="mb-4">
@@ -66,10 +69,7 @@
                                                     <label class="form-label">Background</label>
                                                     <input type="file" class="form-control mt_10" name="backgroud" value="{{ $home_page->backgroud }}" >
                                                 </div>
-                                                <div class="mb-4">
-                                                    <label class="form-label"></label>
-                                                    <button type="submit" class="btn btn-primary">Update</button>
-                                                </div>
+
                                             </div>
                                         </div>
                                         <!-- Search Section End -->
@@ -77,18 +77,69 @@
 
                                     <div class="pt_0 tab-pane fade" id="v-2" role="tabpanel" aria-labelledby="v-2-tab">
                                         <!-- Category Section Start -->
-
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="job_category_heading" value="{{ $home_page->job_category_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Subheading </label>
+                                                    <input type="text" class="form-control" name="job_category_subheading" value="{{ $home_page->job_category_subheading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="job_category_status" class="form-control">
+                                                        <option value="Show" @if($home_page->job_category_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($home_page->job_category_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Category Section End -->
+                                    </div>
+                                    <div class="pt_0 tab-pane fade" id="v-3" role="tabpanel" aria-labelledby="v-3-tab">
+                                        <!-- Why Choose Section Start -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="why_choose_heading" value="{{ $home_page->why_choose_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Subheading </label>
+                                                    <input type="text" class="form-control" name="why_choose_subheading" value="{{ $home_page->why_choose_subheading }}">
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label class="form-label">Existing Background</label>
+                                                    <div>
+                                                        <img src="{{ asset('uploads/'.$home_page->why_choose_background) }}" alt="" class="profile-photo w_400">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Background</label>
+                                                    <input type="file" class="form-control mt_10" name="why_choose_background" value="{{ $home_page->why_choose_background }}" >
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="why_choose_status" class="form-control">
+                                                        <option value="Show" @if($home_page->why_choose_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($home_page->why_choose_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Why Choose Section End -->
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label"></label>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
                     </form>
                 </div>
             </div>

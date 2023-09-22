@@ -407,13 +407,11 @@ hr.invoice-above-table {
     display: none !important;
 }
 
-.form-control.is-invalid,
-.was-validated .form-control:invalid {
-    border-color: #dc3545!important;
+.custom-tab .nav-pills .nav-link {
+    background: #d7e3f9;
+    margin-bottom: 5px;
 }
-.nav-pills .nav-link
-{
-    background-color: #ffc473;
-    margin-top: 5px;
-    color: #fff;
+.custom-tab .nav-pills .nav-link.active {
+    color: #fff!important;
+    background-color: #6777ef!important;
 }
