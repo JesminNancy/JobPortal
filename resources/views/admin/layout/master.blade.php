@@ -27,7 +27,7 @@
 
         <div class="main-content">
             <section class="section">
-                <div class="section-header">
+                <div class="section-header justify-content-between">
                     <h1>@yield('heading')</h1>
                     @yield('button')
                 </div>

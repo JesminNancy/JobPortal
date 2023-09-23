@@ -25,6 +25,8 @@ class AdminHomePageController extends Controller
             'job_category_status' => 'required',
             'why_choose_heading' => 'required',
             'why_choose_status' => 'required',
+            'featured_jobs_heading' => 'required',
+            'featured_jobs_status' => 'required',
         ]);
         if($request->hasFile('backgroud')){
             $request->validate([
@@ -46,10 +48,12 @@ class AdminHomePageController extends Controller
 
             unlink(public_path('uploads/'.$home_page->why_choose_background));
 
-            $ext1 = $request->file('why_choose_background')->getClientOriginalExtension();
-            $final_img1 = 'why_choose_background'.'.'.$ext1;
+            $ext1 = $request->file('why_choose_background')->extension();
+            $final_img1 = 'why_choose_home_background'.time().'.'.$ext1;
+
             $request->file('why_choose_background')->move(public_path('uploads/'),$final_img1);
-            $home_page->background= $final_img1;
+
+            $home_page->why_choose_background= $final_img1;
         }
 
 
@@ -59,13 +63,20 @@ class AdminHomePageController extends Controller
         $home_page->job_location = $request->job_location;
         $home_page->job_category = $request->job_category;
         $home_page->search = $request->search;
+
         $home_page->job_category_heading = $request->job_category_heading;
         $home_page->job_category_subheading = $request->job_category_subheading;
         $home_page->job_category_status = $request->why_choose_status;
+
         $home_page->why_choose_heading = $request->why_choose_heading;
         $home_page->why_choose_subheading = $request->why_choose_subheading;
         $home_page->why_choose_background = $request->why_choose_background;
         $home_page->why_choose_status = $request->why_choose_status;
+
+        $home_page->featured_jobs_heading = $request->featured_jobs_heading;
+        $home_page->featured_jobs_text = $request->featured_jobs_text;
+        $home_page->featured_jobs_status = $request->featured_jobs_status;
+
         $home_page->update();
         return redirect()->back()->with('success','Home Page Data is Saved Successfully');
     }

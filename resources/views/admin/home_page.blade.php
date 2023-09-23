@@ -12,15 +12,23 @@
                         <div class="row custom-tab">
                             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
                                     <a class="nav-link active" id="v-1-tab" data-toggle="pill" href="#v-1" role="tab" aria-controls="v-1" aria-selected="true">
                                         Search
                                     </a>
+
                                     <a class="nav-link" id="v-2-tab" data-toggle="pill" href="#v-2" role="tab" aria-controls="v-2" aria-selected="false">
                                         Job Category
                                     </a>
+
                                     <a class="nav-link" id="v-3-tab" data-toggle="pill" href="#v-3" role="tab" aria-controls="v-3" aria-selected="false">
                                         Why Choose Us
                                     </a>
+
+                                    <a class="nav-link" id="v-4-tab" data-toggle="pill" href="#v-4" role="tab" aria-controls="v-4" aria-selected="false">
+                                        Featured Jobs
+                                    </a>
+
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
@@ -132,6 +140,30 @@
                                             </div>
                                         </div>
                                         <!-- Why Choose Section End -->
+                                    </div>
+                                    <div class="pt_0 tab-pane fade" id="v-4" role="tabpanel" aria-labelledby="v-4-tab">
+                                        <!-- Featured Jobs Section Start -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="featured_jobs_heading" value="{{ $home_page->featured_jobs_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">text </label>
+                                                    <input type="text" class="form-control" name="featured_jobs_text" value="{{ $home_page->featured_jobs_text }}">
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="featured_jobs_status" class="form-control">
+                                                        <option value="Show" @if($home_page->featured_jobs_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($home_page->featured_jobs_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Featured Jobs Section End -->
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label"></label>

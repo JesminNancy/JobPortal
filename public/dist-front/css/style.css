@@ -673,6 +673,7 @@ select {
 .job .item .text h3 {
     font-size: 18px;
     font-weight: 600;
+    padding-right: 40px;
 }
 .job .item .text h3 a {
     color: #333;
@@ -1843,6 +1844,7 @@ select {
 
 .select2-container {
     z-index: 99999 !important;
+    width: 100% !important;
 }
 .select2-container--bootstrap .select2-selection--single {
     height: 36px !important;
@@ -1854,4 +1856,21 @@ h4.resume {
     color: #46bc29;
     font-size: 22px;
     font-weight: 700;
+}
+
+/* Pagination */
+ul.pagination .active>.page-link, ul.pagination .page-link.active {
+    background-color: #46bc29;
+    border-color: #46bc29;
+}
+
+ul.pagination .page-link {
+    color: #46bc29;
+}
+ul.pagination .active>.page-link {
+    color: #fff;
+}
+
+.datepicker-dropdown {
+    z-index: 99999 !important;
 }

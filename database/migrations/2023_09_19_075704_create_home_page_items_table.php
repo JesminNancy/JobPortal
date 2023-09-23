@@ -27,6 +27,9 @@ return new class extends Migration
             $table->text('why_choose_subheading');
             $table->text('why_choose_background');
             $table->text('why_choose_status');
+            $table->text('featured_jobs_heading');
+            $table->text('featured_jobs_text');
+            $table->text('featured_jobs_status');
             $table->timestamps();
         });
     }
