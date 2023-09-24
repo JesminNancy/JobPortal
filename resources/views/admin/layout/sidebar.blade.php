@@ -12,7 +12,7 @@
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
             <li class="nav-item dropdown">
-                <a href="{{ Request::is('admin/home_page') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
+                <a href="{{ Request::is('admin/home-page') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/home_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fa fa-home"></i> Home</a></li>
                     <li class="{{ Request::is('terms') ? 'active' : '' }}"><a class="nav-link" href="{{ route('terms') }}"><i class="fas fa-angle-right"></i> Terms</a></li>
@@ -34,13 +34,9 @@
 
             <li class="{{ Request::is('admin/testimonial/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_testimonial') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Testimonials"><i class="fas fa-hand-point-right"></i> <span>Testimonials</span></a></li>
 
-            <li class=""><a class="nav-link" href="setting.html"><i class="fas fa-hand-point-right"></i> <span>Setting</span></a></li>
+            <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_post') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Posts"><i class="fas fa-hand-point-right"></i> <span>Posts</span></a></li>
 
-            <li class=""><a class="nav-link" href="form.html"><i class="fas fa-hand-point-right"></i> <span>Form</span></a></li>
 
-            <li class=""><a class="nav-link" href="table.html"><i class="fas fa-hand-point-right"></i> <span>Table</span></a></li>
-
-            <li class=""><a class="nav-link" href="invoice.html"><i class="fas fa-hand-point-right"></i> <span>Invoice</span></a></li>
 
         </ul>
     </aside>
