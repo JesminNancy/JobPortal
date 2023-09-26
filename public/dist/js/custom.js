@@ -20,7 +20,7 @@
     });
 
     tinymce.init({
-        selector: ".editor",
+        selector: "textarea.texteditor",
         height: "300",
     });
 

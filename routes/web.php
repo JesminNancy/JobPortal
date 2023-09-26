@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTermPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\JobCategoryController;
+use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\TermsController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +26,7 @@ Route::get('terms-of-use',[TermsController::class,'index'])->name('terms');
 Route::get('job_categories',[JobCategoryController::class,'index'])->name('job_categories');
 Route::get('blog',[BlogController::class,'index'])->name('blog');
 Route::get('fqa',[FaqController::class,'index'])->name('fqa');
+Route::get('privacy-policy',[PrivacyController::class,'index'])->name('privacy');
 
 //Admin
 
@@ -50,6 +53,9 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/term_page',[AdminTermPageController::class,'index'])->name('admin_term_page');
     Route::post('/admin/home_page/update',[AdminTermPageController::class,'update'])->name('admin_term_page_update');
+
+    Route::get('/admin/privacy_page',[AdminPrivacyPageController::class,'index'])->name('admin_privacy_page');
+    Route::post('/admin/home_page/update',[AdminPrivacyPageController::class,'update'])->name('admin_privacy_page_update');
 
     Route::get('/admin/job_category/view',[AdminJobCategoryController::class,'index'])->name('admin_job_category_view');
     Route::get('/admin/job_category/create',[AdminJobCategoryController::class,'create'])->name('admin_job_category_create');

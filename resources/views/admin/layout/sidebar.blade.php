@@ -11,13 +11,16 @@
         <ul class="sidebar-menu">
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown">
-                <a href="{{ Request::is('admin/home-page') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
+            <li class="nav-item dropdown {{ Request::is('admin/home-page')||Request::is('admin/faq_page')|| Request::is('admin/term_page') ? 'active' : '' }}">
+
+                <a href="#" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
+
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/home_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="{{ Request::is('admin_home_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fa fa-home"></i> Home</a></li>
 
                     <li class="{{ Request::is('admin/faq_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_faq_page') }}"><i class="fa fa-home"></i> Faq</a></li>
                     <li class="{{ Request::is('admin/term_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_term_page') }}"><i class="fa fa-home"></i> Terms Of Use</a></li>
+                    <li class="{{ Request::is('admin/privacy_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_privacy_page') }}"><i class="fa fa-home"></i> Privacy Policy</a></li>
 
                 </ul>
             </li>
