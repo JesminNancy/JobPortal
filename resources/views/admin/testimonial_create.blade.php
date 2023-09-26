@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label>Comment *</label>
-                            <textarea name="comment" class="form-control h_100" cols="30" rows="10"></textarea>
+                            <textarea name="comment" class="form-control editor" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>

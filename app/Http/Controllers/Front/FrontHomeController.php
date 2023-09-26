@@ -17,7 +17,7 @@ class FrontHomeController extends Controller
         $job_categories = JobCategory::orderBy('name','asc')->take(9)->get();
         $why_choose_item = WhyChooseItem::get();
         $testimonials = Testimonial::get();
-        $posts = Post::orderBy('id','desc')->get();
+        $posts = Post::orderBy('id','asc')->take(3)->get();
         return view('front.home',compact('home_page','job_categories','why_choose_item','testimonials','posts'));
     }
 }

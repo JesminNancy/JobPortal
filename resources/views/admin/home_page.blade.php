@@ -29,6 +29,10 @@
                                         Featured Jobs
                                     </a>
 
+                                    <a class="nav-link" id="v-5-tab" data-toggle="pill" href="#v-5" role="tab" aria-controls="v-5" aria-selected="false">
+                                        Blog
+                                    </a>
+
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
@@ -165,6 +169,32 @@
                                         </div>
                                         <!-- Featured Jobs Section End -->
                                     </div>
+
+                                    <div class="pt_0 tab-pane fade" id="v-5" role="tabpanel" aria-labelledby="v-5-tab">
+                                        <!-- Blog Section Start -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="blog_heading" value="{{ $home_page->blog_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Subheading</label>
+                                                    <input type="text" class="form-control" name="blog_subheading" value="{{ $home_page->blog_subheading }}">
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="blog_status" class="form-control">
+                                                        <option value="Show" @if($home_page->blog_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($home_page->blog_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Featured Jobs Section End -->
+                                    </div>
+
                                     <div class="mb-4">
                                         <label class="form-label"></label>
                                         <button type="submit" class="btn btn-primary">Update</button>

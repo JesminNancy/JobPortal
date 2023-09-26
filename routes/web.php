@@ -1,14 +1,18 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminFqaController;
+use App\Http\Controllers\Admin\AdminFqaPageController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminTermPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Front\TermsController;
@@ -16,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 // Front
 Route::get('',[FrontHomeController::class,'index'])->name('home');
-Route::get('terms',[TermsController::class,'index'])->name('terms');
+Route::get('terms-of-use',[TermsController::class,'index'])->name('terms');
 Route::get('job_categories',[JobCategoryController::class,'index'])->name('job_categories');
 Route::get('blog',[BlogController::class,'index'])->name('blog');
+Route::get('fqa',[FaqController::class,'index'])->name('fqa');
 
 //Admin
 
@@ -40,6 +45,11 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/home_page',[AdminHomePageController::class,'index'])->name('admin_home_page');
     Route::post('/admin/home_page/update',[AdminHomePageController::class,'update'])->name('admin_home_page_update');
 
+    Route::get('/admin/faq_page',[AdminFqaPageController::class,'index'])->name('admin_faq_page');
+    Route::post('/admin/home_page/update',[AdminFqaPageController::class,'update'])->name('admin_faq_page_update');
+
+    Route::get('/admin/term_page',[AdminTermPageController::class,'index'])->name('admin_term_page');
+    Route::post('/admin/home_page/update',[AdminTermPageController::class,'update'])->name('admin_term_page_update');
 
     Route::get('/admin/job_category/view',[AdminJobCategoryController::class,'index'])->name('admin_job_category_view');
     Route::get('/admin/job_category/create',[AdminJobCategoryController::class,'create'])->name('admin_job_category_create');
@@ -68,5 +78,12 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/post/edit/{id}', [AdminPostController::class, 'edit'])->name('admin_post_edit');
     Route::post('/admin/post/update/{id}', [AdminPostController::class, 'update'])->name('admin_post_update');
     Route::get('/admin/post/delete/{id}', [AdminPostController::class, 'delete'])->name('admin_post_delete');
+
+    Route::get('/admin/fqa/view', [AdminFqaController::class, 'index'])->name('admin_fqa');
+    Route::get('/admin/fqa/create', [AdminFqaController::class, 'create'])->name('admin_fqa_create');
+    Route::post('/admin/fqa/store', [AdminFqaController::class, 'store'])->name('admin_fqa_store');
+    Route::get('/admin/fqa/edit/{id}', [AdminFqaController::class, 'edit'])->name('admin_fqa_edit');
+    Route::post('/admin/fqa/update/{id}', [AdminFqaController::class, 'update'])->name('admin_fqa_update');
+    Route::get('/admin/fqa/delete/{id}', [AdminFqaController::class, 'delete'])->name('admin_fqa_delete');
 });
 

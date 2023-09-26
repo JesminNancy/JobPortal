@@ -15,7 +15,10 @@
                 <a href="{{ Request::is('admin/home-page') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/home_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="{{ Request::is('terms') ? 'active' : '' }}"><a class="nav-link" href="{{ route('terms') }}"><i class="fas fa-angle-right"></i> Terms</a></li>
+
+                    <li class="{{ Request::is('admin/faq_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_faq_page') }}"><i class="fa fa-home"></i> Faq</a></li>
+                    <li class="{{ Request::is('admin/term_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_term_page') }}"><i class="fa fa-home"></i> Terms Of Use</a></li>
+
                 </ul>
             </li>
 
@@ -36,7 +39,7 @@
 
             <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_post') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Posts"><i class="fas fa-hand-point-right"></i> <span>Posts</span></a></li>
 
-
+            <li class="{{ Request::is('admin/fqa/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_fqa') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Posts"><i class="fas fa-hand-point-right"></i> <span>FQA</span></a></li>
 
         </ul>
     </aside>

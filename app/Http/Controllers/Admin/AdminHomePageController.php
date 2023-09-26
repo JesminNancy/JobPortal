@@ -27,6 +27,8 @@ class AdminHomePageController extends Controller
             'why_choose_status' => 'required',
             'featured_jobs_heading' => 'required',
             'featured_jobs_status' => 'required',
+            'blog_heading' => 'required',
+            'blog_status' => 'required',
         ]);
         if($request->hasFile('backgroud')){
             $request->validate([
@@ -43,19 +45,18 @@ class AdminHomePageController extends Controller
 
         if($request->hasFile('why_choose_background')){
             $request->validate([
-                'why_choose_background' => 'required|image|mimes:jpg,jpeg,png,gif',
+                'why_choose_background' => 'image|mimes:jpg,jpeg,png,gif',
             ]);
 
             unlink(public_path('uploads/'.$home_page->why_choose_background));
 
-            $ext1 = $request->file('why_choose_background')->extension();
-            $final_img1 = 'why_choose_home_background'.time().'.'.$ext1;
+            $ext1 = $request->file('why_choose_background')->getClientOriginalExtension();
+            $image_name =time().'.'.$ext1;
 
-            $request->file('why_choose_background')->move(public_path('uploads/'),$final_img1);
+            $request->file('why_choose_background')->move(public_path('uploads/'),$image_name);
 
-            $home_page->why_choose_background= $final_img1;
+            $home_page->why_choose_background= $image_name;
         }
-
 
         $home_page->heading = $request->heading;
         $home_page->text = $request->text;
@@ -77,7 +78,12 @@ class AdminHomePageController extends Controller
         $home_page->featured_jobs_text = $request->featured_jobs_text;
         $home_page->featured_jobs_status = $request->featured_jobs_status;
 
+        $home_page->blog_heading = $request->blog_heading;
+        $home_page->blog_subheading = $request->blog_subheading;
+        $home_page->blog_status = $request->blog_status;
+
         $home_page->update();
+
         return redirect()->back()->with('success','Home Page Data is Saved Successfully');
     }
 }

@@ -30,6 +30,9 @@ return new class extends Migration
             $table->text('featured_jobs_heading');
             $table->text('featured_jobs_text');
             $table->text('featured_jobs_status');
+            $table->text('blog_heading');
+            $table->text('blog_subheading');
+            $table->text('blog_status');
             $table->timestamps();
         });
     }

@@ -415,3 +415,7 @@ hr.invoice-above-table {
     color: #fff!important;
     background-color: #6777ef!important;
 }
+
+.navbar.main-navbar{
+    justify-content: space-between !important;
+}
