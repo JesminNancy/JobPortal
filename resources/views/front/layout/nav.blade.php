@@ -10,7 +10,7 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <img src="uploads/logo.png" alt="" />
                 </a>
                 <div
@@ -43,7 +43,7 @@
                             <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact.html" class="nav-link"
+                            <a href="{{ route('contact') }}" class="nav-link"
                                 >Contact</a
                             >
                         </li>

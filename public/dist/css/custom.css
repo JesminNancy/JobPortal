@@ -419,3 +419,17 @@ hr.invoice-above-table {
 .navbar.main-navbar{
     justify-content: space-between !important;
 }
+
+.btn-block{
+    width: 100% !important;
+}
+.w-100-p {
+    width: 100%;
+}
+.rounded-circle-custom {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 4px;
+}

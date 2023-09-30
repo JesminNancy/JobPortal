@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminFqaController;
 use App\Http\Controllers\Admin\AdminFqaPageController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\AdminTermPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Front\BlogController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\JobCategoryController;
@@ -27,6 +29,8 @@ Route::get('job_categories',[JobCategoryController::class,'index'])->name('job_c
 Route::get('blog',[BlogController::class,'index'])->name('blog');
 Route::get('fqa',[FaqController::class,'index'])->name('fqa');
 Route::get('privacy-policy',[PrivacyController::class,'index'])->name('privacy');
+Route::get('contact',[ContactController::class,'index'])->name('contact');
+Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
 
 //Admin
 
@@ -49,13 +53,16 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::post('/admin/home_page/update',[AdminHomePageController::class,'update'])->name('admin_home_page_update');
 
     Route::get('/admin/faq_page',[AdminFqaPageController::class,'index'])->name('admin_faq_page');
-    Route::post('/admin/home_page/update',[AdminFqaPageController::class,'update'])->name('admin_faq_page_update');
+    Route::post('/admin/faq_page/update',[AdminFqaPageController::class,'update'])->name('admin_faq_page_update');
 
     Route::get('/admin/term_page',[AdminTermPageController::class,'index'])->name('admin_term_page');
-    Route::post('/admin/home_page/update',[AdminTermPageController::class,'update'])->name('admin_term_page_update');
+    Route::post('/admin/terms_page/update',[AdminTermPageController::class,'update'])->name('admin_term_page_update');
 
     Route::get('/admin/privacy_page',[AdminPrivacyPageController::class,'index'])->name('admin_privacy_page');
-    Route::post('/admin/home_page/update',[AdminPrivacyPageController::class,'update'])->name('admin_privacy_page_update');
+    Route::post('/admin/privacy_page/update',[AdminPrivacyPageController::class,'update'])->name('admin_privacy_page_update');
+
+    Route::get('/admin/contact_page',[AdminContactController::class,'index'])->name('admin_contact_page');
+    Route::post('/admin/contact_page/update',[AdminContactController::class,'update'])->name('admin_contact_page_update');
 
     Route::get('/admin/job_category/view',[AdminJobCategoryController::class,'index'])->name('admin_job_category_view');
     Route::get('/admin/job_category/create',[AdminJobCategoryController::class,'create'])->name('admin_job_category_create');

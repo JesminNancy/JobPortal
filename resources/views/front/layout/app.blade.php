@@ -7,8 +7,8 @@
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
 
-        <meta name="description" content="" />
-        <title>Job Hunt</title>
+        <meta name="description" content="@yield('seo_meta_description')" />
+        <title>@yield('seo_title')</title>
 
         <link rel="icon" type="image/png" href="uploads/favicon.png" />
 
