@@ -42,7 +42,7 @@
                         <li class="nav-item {{ Request::is('blog')||Request::is('post/*') ? 'active' : '' }}">
                             <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ Request::is('fqa') ? 'active' : '' }}">
                             <a href="{{ route('contact') }}" class="nav-link"
                                 >Contact</a
                             >

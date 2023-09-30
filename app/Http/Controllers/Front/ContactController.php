@@ -19,7 +19,7 @@ class ContactController extends Controller
 
     public function submit(Request $request)
     {
-        $admin_data = Admin::where('id',1)->first();
+        // $admin_data = Admin::where('id',1)->first();
 
         $request->validate([
             'person_name' => 'required',
@@ -33,7 +33,7 @@ class ContactController extends Controller
         $message .= 'Email: '.$request->person_email.'<br>';
         $message .= 'Message: '.$request->person_message;
 
-        Mail::to($admin_data->email)->send(new WebsiteMail($subject,$message));
+        Mail::to($request->email)->send(new WebsiteMail($subject,$message));
 
         return redirect()->back()->with('success', 'Email is sent successfully! We will contact you soon.');
 

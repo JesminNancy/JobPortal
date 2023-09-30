@@ -22,7 +22,7 @@
                     <li class="{{ Request::is('admin/term_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_term_page') }}"><i class="fa fa-home"></i> Terms Of Use</a></li>
                     <li class="{{ Request::is('admin/privacy_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_privacy_page') }}"><i class="fa fa-home"></i> Privacy Policy</a></li>
                     <li class="{{ Request::is('admin/contact_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_contact_page') }}"><i class="fa fa-home"></i> Contact Us</a></li>
-
+                    <li class="{{ Request::is('admin/job_category_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category_page') }}"><i class="fa fa-home"></i> Job Category</a></li>
                 </ul>
             </li>
 
