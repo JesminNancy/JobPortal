@@ -39,7 +39,7 @@
                             <textarea name="description" class="form-control editor" cols="30" rows="10">{{ old('description') }}</textarea>
                         </div>
 
-                        {{-- <h4 class="seo_section">SEO Section</h5>
+                        <h4 class="seo_section">SEO Section</h5>
                         <div class="form-group mb-3">
                             <label>Title</label>
                             <input type="text" class="form-control" name="title" value="{{ old('title') }}">
@@ -47,7 +47,7 @@
                         <div class="form-group mb-3">
                             <label>Meta Description</label>
                             <textarea name="meta_description" class="form-control h_100" cols="30" rows="10">{{ old('meta_description') }}</textarea>
-                        </div> --}}
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

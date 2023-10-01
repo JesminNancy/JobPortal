@@ -1,253 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+@extends('front.layout.app')
 
-        <meta name="description" content="" />
-        <title>Job Hunt</title>
+@section('seo_title'){{ $blog_page_item->title }}@endsection
+@section('seo_meta_description'){{ $blog_page_item->meta_description }}@endsection
 
-        <link rel="icon" type="image/png" href="uploads/favicon.png" />
-
-        @include('front.layout.styles')
-        @include('front.layout.script')
-
-
-
-        <link
-            href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-        />
-    </head>
-    <body>
-        <div class="top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 left-side">
-                        <ul>
-                            <li class="phone-text">111-222-3333</li>
-                            <li class="email-text">contact@arefindev.com</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 right-side">
-                        <ul class="right">
-                            <li class="menu">
-                                <a href="login.html"
-                                    ><i class="fas fa-sign-in-alt"></i> Login</a
-                                >
-                            </li>
-                            <li class="menu">
-                                <a href="signup.html"
-                                    ><i class="fas fa-user"></i> Sign Up</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+@section('main_content')
+{{-- <div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_blog) }}')"> --}}
+    <div class="bg"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{ $blog_page_item->heading }}</h2>
             </div>
         </div>
+    </div>
+</div>
 
-        @include('front.layout.nav')
-
-        <div
-            class="page-top"
-            style="background-image: url('uploads/banner.jpg')"
-        >
-            <div class="bg"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Blog</h2>
+<div class="blog">
+    <div class="container">
+        <div class="row">
+            @foreach($posts as $item)
+            <div class="col-lg-4 col-md-6">
+                <div class="item">
+                    <div class="photo">
+                        <img src="{{ asset('uploads/'.$item->photo) }}" alt="" />
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="blog">
-            <div class="container">
-                <div class="row">
-                    @foreach ($posts as $post)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="photo">
-                                <img src="{{ asset('uploads/'.$post->photo) }}" alt="" />
-                            </div>
-                            <div class="text">
-                                <h2>
-                                    <a href="" >{{ $post->heading }}</a>
-                                </h2>
-                                <div class="short-des">
-                                    <p>
-                                        {{ $post->short_description }}
-                                    </p>
-                                </div>
-                                <div class="button">
-                                    <a href="" class="btn btn-primary"
-                                        >Read More</a
-                                    >
-                                </div>
-                            </div>
+                    <div class="text">
+                        <h2>
+                            <a href="{{ route('post',$item->slug) }}"
+                                >{{ $item->title }}</a
+                            >
+                        </h2>
+                        <div class="short-des">
+                            <p>
+                                {!! nl2br($item->short_description) !!}
+                            </p>
+                        </div>
+                        <div class="button">
+                            <a href="{{ route('post',$item->slug) }}" class="btn btn-primary"
+                                >Read More</a
+                            >
                         </div>
                     </div>
-                    @endforeach
                 </div>
+            </div>
+            @endforeach
+
+            <div class="col-md-12">
                 {{ $posts->links() }}
             </div>
         </div>
-
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h2 class="heading">For Candidates</h2>
-                            <ul class="useful-links">
-                                <li>
-                                    <a href="">Browser Jobs</a>
-                                </li>
-                                <li>
-                                    <a href="">Browse Candidates</a>
-                                </li>
-                                <li>
-                                    <a href="">Candidate Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="">Saved Jobs</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h2 class="heading">For Companies</h2>
-                            <ul class="useful-links">
-                                <li>
-                                    <a href="">Post Job</a>
-                                </li>
-                                <li>
-                                    <a href="">Browse Jobs</a>
-                                </li>
-                                <li>
-                                    <a href="">Company Dashboard</a>
-                                </li>
-                                <li>
-                                    <a href="">Applications</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h2 class="heading">Contact</h2>
-                            <div class="list-item">
-                                <div class="left">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="right">
-                                    34 Antiger Lane, USA, 12937
-                                </div>
-                            </div>
-                            <div class="list-item">
-                                <div class="left">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div class="right">contact@arefindev.com</div>
-                            </div>
-                            <div class="list-item">
-                                <div class="left">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="right">122-222-1212</div>
-                            </div>
-                            <ul class="social">
-                                <li>
-                                    <a href=""
-                                        ><i class="fab fa-facebook-f"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href=""
-                                        ><i class="fab fa-twitter"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href=""
-                                        ><i class="fab fa-pinterest-p"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href=""
-                                        ><i class="fab fa-linkedin-in"></i
-                                    ></a>
-                                </li>
-                                <li>
-                                    <a href=""
-                                        ><i class="fab fa-instagram"></i
-                                    ></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="item">
-                            <h2 class="heading">Newsletter</h2>
-                            <p>
-                                To get the latest news from our website, please
-                                subscribe us here:
-                            </p>
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <input
-                                        type="text"
-                                        name=""
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <input
-                                        type="submit"
-                                        class="btn btn-primary"
-                                        value="Subscribe Now"
-                                    />
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="copyright">
-                            Copyright 2022, ArefinDev. All Rights Reserved.
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="right">
-                            <ul>
-                                <li><a href="{{ route('terms') }}">Terms of Use</a></li>
-                                <li>
-                                    <a href="privacy.html">Privacy Policy</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="scroll-top">
-            <i class="fas fa-angle-up"></i>
-        </div>
-
-        @include('front.layout.footer')
-    </body>
-</html>
+    </div>
+</div>
+@endsection

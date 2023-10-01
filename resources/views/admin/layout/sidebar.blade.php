@@ -11,7 +11,7 @@
         <ul class="sidebar-menu">
             <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/home-page')||Request::is('admin/faq_page')|| Request::is('admin/term_page') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/home-page')||Request::is('admin/faq_page')|| Request::is('admin/term_page')||Request::is('admin/blog_page')||Request::is('admin/privacy_page')||Request::is('admin/job_category_page')||Request::is('admin/job_category_page') ? 'active' : '' }}">
 
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-cog"></i><span>Page Settings</span></a>
 
@@ -23,6 +23,7 @@
                     <li class="{{ Request::is('admin/privacy_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_privacy_page') }}"><i class="fa fa-home"></i> Privacy Policy</a></li>
                     <li class="{{ Request::is('admin/contact_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_contact_page') }}"><i class="fa fa-home"></i> Contact Us</a></li>
                     <li class="{{ Request::is('admin/job_category_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category_page') }}"><i class="fa fa-home"></i> Job Category</a></li>
+                    <li class="{{ Request::is('admin/blog_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_blog_page') }}"><i class="fa fa-home"></i>Blog</a></li>
                 </ul>
             </li>
 

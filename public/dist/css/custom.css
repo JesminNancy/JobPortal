@@ -433,3 +433,10 @@ hr.invoice-above-table {
     object-fit: cover;
     margin-right: 4px;
 }
+h4.seo_section {
+    margin-top: 40px;
+    padding: 10px;
+    background: #ffcfcf;
+    color: #dc3545;
+    font-size: 18px;
+}
