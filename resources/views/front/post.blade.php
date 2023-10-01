@@ -1,10 +1,10 @@
 @extends('front.layout.app')
 
-{{-- @section('seo_title'){{ $post_single->title }}@endsection
-@section('seo_meta_description'){{ $post_single->meta_description }}@endsection --}}
+@section('seo_title'){{ $post_single->title }}@endsection
+@section('seo_meta_description'){{ $post_single->meta_description }}@endsection
 
 @section('main_content')
-<div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_post) }}')">
+{{-- <div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_post) }}')"> --}}
     <div class="bg"></div>
     <div class="container">
         <div class="row">
