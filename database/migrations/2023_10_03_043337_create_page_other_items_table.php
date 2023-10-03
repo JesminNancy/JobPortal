@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('page_other_items', function (Blueprint $table) {
             $table->id();
+            $table->text('login_page_heading');
+            $table->text('login_page_title')->nullable();
+            $table->text('login_page_meta_description')->nullable();
+            $table->text('signup_page_heading');
+            $table->text('signup_page_title')->nullable();
+            $table->text('signup_page_meta_description')->nullable();
+            $table->text('forget_password_page_heading');
+            $table->text('forget_password_page_title')->nullable();
+            $table->text('forget_password_page_meta_description')->nullable();
             $table->timestamps();
         });
     }

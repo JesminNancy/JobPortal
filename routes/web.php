@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminJobCategoryPageController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminPackageController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminPricingPageController;
@@ -20,11 +21,14 @@ use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
+use App\Http\Controllers\Front\ForgetPasswordController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\JobCategoryController;
+use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\PricingController;
 use App\Http\Controllers\Front\PrivacyController;
+use App\Http\Controllers\Front\SignUpController;
 use App\Http\Controllers\Front\TermsController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +43,31 @@ Route::get('privacy-policy',[PrivacyController::class,'index'])->name('privacy')
 Route::get('contact',[ContactController::class,'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
 Route::get('/pricing',[PricingController::class, 'index'])->name('pricing');
+Route::get('login',[LoginController::class,'index'])->name('login');
+Route::get('signup',[SignUpController::class,'index'])->name('signup');
+Route::get('forget_password',[ForgetPasswordController::class,'index'])->name('forget_password');
+
+
+/* Company */
+Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
+Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
+Route::get('company_signup_verify/{token}/{email}', [SignupController::class, 'company_signup_verify'])->name('company_signup_verify');
+Route::get('/company/logout', [LoginController::class, 'company_logout'])->name('company_logout');
+ Route::get('forget-password/company', [ForgetPasswordController::class, 'company_forget_password'])->name('company_forget_password');
+ Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
+ Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class, 'company_reset_password'])->name('company_reset_password');
+Route::post('reset-password/company/submit', [ForgetPasswordController::class, 'company_reset_password_submit'])->name('company_reset_password_submit');
+
+
+/* Candidate */
+Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
+Route::post('candidate_signup_submit', [SignupController::class, 'candidate_signup_submit'])->name('candidate_signup_submit');
+Route::get('candidate_signup_verify/{token}/{email}', [SignupController::class, 'candidate_signup_verify'])->name('candidate_signup_verify');
+Route::get('/candidate/logout', [LoginController::class, 'candidate_logout'])->name('candidate_logout');
+Route::get('forget-password/candidate', [ForgetPasswordController::class, 'candidate_forget_password'])->name('candidate_forget_password');
+Route::post('forget-password/candidate/submit', [ForgetPasswordController::class, 'candidate_forget_password_submit'])->name('candidate_forget_password_submit');
+Route::get('reset-password/candidate/{token}/{email}', [ForgetPasswordController::class, 'candidate_reset_password'])->name('candidate_reset_password');
+Route::post('reset-password/candidate/submit', [ForgetPasswordController::class, 'candidate_reset_password_submit'])->name('candidate_reset_password_submit');
 
 //Admin
 
@@ -59,6 +88,9 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::post('/admin/edit_profile_submit',[AdminProfileController::class,'profile_submit'])->name('admin_profile_submit');
     Route::get('/admin/home_page',[AdminHomePageController::class,'index'])->name('admin_home_page');
     Route::post('/admin/home_page/update',[AdminHomePageController::class,'update'])->name('admin_home_page_update');
+
+    Route::get('/admin/other_page',[AdminOtherPageController::class,'index'])->name('admin_other_page');
+    Route::post('/admin/other_page/update',[AdminOtherPageController::class,'update'])->name('admin_other_page_update');
 
     Route::get('/admin/faq_page',[AdminFqaPageController::class,'index'])->name('admin_faq_page');
     Route::post('/admin/faq_page/update',[AdminFqaPageController::class,'update'])->name('admin_faq_page_update');

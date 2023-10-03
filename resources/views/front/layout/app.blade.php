@@ -33,12 +33,12 @@
                     <div class="col-md-6 right-side">
                         <ul class="right">
                             <li class="menu">
-                                <a href="login.html"
+                                <a href="{{ route('login') }}"
                                     ><i class="fas fa-sign-in-alt"></i> Login</a
                                 >
                             </li>
                             <li class="menu">
-                                <a href="signup.html"
+                                <a href="{{ route('signup') }}"
                                     ><i class="fas fa-user"></i> Sign Up</a
                                 >
                             </li>
