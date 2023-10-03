@@ -9,7 +9,9 @@ use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminJobCategoryPageController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPackageController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminPricingPageController;
 use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTermPageController;
@@ -21,6 +23,7 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\PricingController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\TermsController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +38,7 @@ Route::get('fqa',[FaqController::class,'index'])->name('fqa');
 Route::get('privacy-policy',[PrivacyController::class,'index'])->name('privacy');
 Route::get('contact',[ContactController::class,'index'])->name('contact');
 Route::post('contact/submit', [ContactController::class, 'submit'])->name('contact_submit');
+Route::get('/pricing',[PricingController::class, 'index'])->name('pricing');
 
 //Admin
 
@@ -58,6 +62,9 @@ Route::middleware(['admin:admin'])->group(function(){
 
     Route::get('/admin/faq_page',[AdminFqaPageController::class,'index'])->name('admin_faq_page');
     Route::post('/admin/faq_page/update',[AdminFqaPageController::class,'update'])->name('admin_faq_page_update');
+
+    Route::get('/admin/pricing_page',[AdminPricingPageController::class,'index'])->name('admin_pricing_page');
+    Route::post('/admin/faq_page/update',[AdminPricingPageController::class,'update'])->name('admin_pricing_page_update');
 
     Route::get('/admin/term_page',[AdminTermPageController::class,'index'])->name('admin_term_page');
     Route::post('/admin/terms_page/update',[AdminTermPageController::class,'update'])->name('admin_term_page_update');
@@ -108,5 +115,13 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/fqa/edit/{id}', [AdminFqaController::class, 'edit'])->name('admin_fqa_edit');
     Route::post('/admin/fqa/update/{id}', [AdminFqaController::class, 'update'])->name('admin_fqa_update');
     Route::get('/admin/fqa/delete/{id}', [AdminFqaController::class, 'delete'])->name('admin_fqa_delete');
+
+    Route::get('/admin/package/view', [AdminPackageController::class, 'index'])->name('admin_package');
+    Route::get('/admin/package/create', [AdminPackageController::class, 'create'])->name('admin_package_create');
+    Route::post('/admin/package/store', [AdminPackageController::class, 'store'])->name('admin_package_store');
+    Route::get('/admin/package/edit/{id}', [AdminPackageController::class, 'edit'])->name('admin_package_edit');
+    Route::post('/admin/package/update/{id}', [AdminPackageController::class, 'update'])->name('admin_package_update');
+    Route::get('/admin/package/delete/{id}', [AdminPackageController::class, 'delete'])->name('admin_package_delete');
+
 });
 

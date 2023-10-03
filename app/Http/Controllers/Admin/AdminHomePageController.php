@@ -50,8 +50,8 @@ class AdminHomePageController extends Controller
 
             unlink(public_path('uploads/'.$home_page->why_choose_background));
 
-            $ext1 = $request->file('why_choose_background')->getClientOriginalExtension();
-            $image_name =time().'.'.$ext1;
+            $ext = $request->file('why_choose_background')->getClientOriginalExtension();
+            $image_name ='why_choose_background_'.time().'.'.$ext;
 
             $request->file('why_choose_background')->move(public_path('uploads/'),$image_name);
 
@@ -71,7 +71,6 @@ class AdminHomePageController extends Controller
 
         $home_page->why_choose_heading = $request->why_choose_heading;
         $home_page->why_choose_subheading = $request->why_choose_subheading;
-        $home_page->why_choose_background = $request->why_choose_background;
         $home_page->why_choose_status = $request->why_choose_status;
 
         $home_page->featured_jobs_heading = $request->featured_jobs_heading;
@@ -81,6 +80,9 @@ class AdminHomePageController extends Controller
         $home_page->blog_heading = $request->blog_heading;
         $home_page->blog_subheading = $request->blog_subheading;
         $home_page->blog_status = $request->blog_status;
+
+        $home_page->title = $request->title;
+        $home_page->meta_description = $request->meta_description;
 
         $home_page->update();
 

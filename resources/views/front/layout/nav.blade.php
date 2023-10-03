@@ -31,8 +31,8 @@
                                 >Companies</a
                             >
                         </li>
-                        <li class="nav-item">
-                            <a href="pricing.html" class="nav-link"
+                        <li class="nav-item {{ Request::is('pricing') ? 'active' : '' }}">
+                            <a href="{{ route('pricing') }}" class="nav-link"
                                 >Pricing</a
                             >
                         </li>

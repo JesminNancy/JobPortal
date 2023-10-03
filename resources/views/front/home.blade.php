@@ -1,5 +1,7 @@
 @extends('front.layout.app')
 
+@section('seo_title'){{ $home_page->title }}@endsection
+@section('seo_meta_description'){{ $home_page->meta_description }}@endsection
 
 @section('main_content')
 
