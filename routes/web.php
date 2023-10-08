@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTermPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
+use App\Http\Controllers\Company\CompanyDashboardController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
@@ -57,6 +58,13 @@ Route::get('/company/logout', [LoginController::class, 'company_logout'])->name(
  Route::post('forget-password/company/submit', [ForgetPasswordController::class, 'company_forget_password_submit'])->name('company_forget_password_submit');
  Route::get('reset-password/company/{token}/{email}', [ForgetPasswordController::class, 'company_reset_password'])->name('company_reset_password');
 Route::post('reset-password/company/submit', [ForgetPasswordController::class, 'company_reset_password_submit'])->name('company_reset_password_submit');
+
+
+/*....Company with Middleware......*/
+
+Route::middleware(['company:company'])->group(function(){
+    Route::get('company/dashboard', [CompanyDashboardController::class, 'dashboard'])->name('company_dashboard');
+});
 
 
 /* Candidate */

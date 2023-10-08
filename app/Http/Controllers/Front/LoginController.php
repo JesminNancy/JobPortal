@@ -24,7 +24,6 @@ class LoginController extends Controller
         $credential = [
             'username' => $request->username,
             'password' => $request->password,
-            'status' => 1
         ];
 
         if(Auth::guard('company')->attempt($credential)) {
