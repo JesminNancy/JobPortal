@@ -38,4 +38,29 @@ class LoginController extends Controller
         Auth::guard('company')->logout();
         return redirect()->route('login');
     }
+
+    public function candidate_login_submit(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credential = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+
+        if(Auth::guard('candidate')->attempt($credential)) {
+            return redirect()->route('candidate_dashboard');
+        } else {
+            return redirect()->route('login')->with('error', 'Information is not correct!');
+        }
+    }
+
+    public function candidate_logout()
+    {
+        Auth::guard('candidate')->logout();
+        return redirect()->route('login');
+    }
 }

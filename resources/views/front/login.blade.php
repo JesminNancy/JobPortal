@@ -63,7 +63,7 @@
                             aria-labelledby="pills-home-tab"
                             tabindex="0"
                         >
-                            {{-- <form action="{{ route('candidate_login_submit') }}" method="post">
+                            <form action="{{ route('candidate_login_submit') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="" class="form-label">Username</label>
@@ -79,7 +79,7 @@
                                 </button>
                                 <a href="{{ route('candidate_forget_password') }}" class="primary-color">Forget Password?</a>
                             </div>
-                            </form> --}}
+                            </form>
                         </div>
                         <div
                             class="tab-pane fade"

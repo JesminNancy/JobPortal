@@ -1,8 +1,5 @@
 @extends('front.layout.app')
 
-@section('seo_title'){{ $other_page_item->signup_page_title }}@endsection
-@section('seo_meta_description'){{ $other_page_item->signup_page_meta_description }}@endsection
-
 @section('main_content')
 {{-- <div class="page-top" style="background-image: url('{{ asset('uploads/'.$global_banner_data->banner_signup) }}')"> --}}
     <div class="bg"></div>
@@ -13,7 +10,7 @@
             </div>
         </div>
     </div>
-</div>
+{{-- </div> --}}
 
 <div class="page-content">
     <div class="container">
