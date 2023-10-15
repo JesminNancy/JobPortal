@@ -11,6 +11,13 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if(Auth::guard('candidate')->check()) {
+            return redirect()->route('candidate_dashboard');
+        }
+
+        if(Auth::guard('company')->check()) {
+            return redirect()->route('company_dashboard');
+        }
         $other_page_item = PageOtherItem::where('id',1)->first();
         return view('front.login', compact('other_page_item'));
     }

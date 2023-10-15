@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\AdminTermPageController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Candidate\CandidateDashboardController;
-use App\Http\Controllers\Company\CompanyDashboardController;
+use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
@@ -50,6 +50,7 @@ Route::get('signup',[SignUpController::class,'index'])->name('signup');
 Route::get('forget_password',[ForgetPasswordController::class,'index'])->name('forget_password');
 
 
+
 /* Company */
 Route::post('company_login_submit', [LoginController::class, 'company_login_submit'])->name('company_login_submit');
 Route::post('company_signup_submit', [SignupController::class, 'company_signup_submit'])->name('company_signup_submit');
@@ -64,13 +65,21 @@ Route::post('reset-password/company/submit', [ForgetPasswordController::class, '
 /*....Company with Middleware......*/
 
 Route::middleware(['company:company'])->group(function(){
-    Route::get('company/dashboard', [CompanyDashboardController::class, 'dashboard'])->name('company_dashboard');
+    Route::get('company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
+    Route::get('/company/make-payment', [CompanyController::class, 'make_payment'])->name('company_make_payment');
+    Route::post('company/paypal/payment',[CompanyController::class,'paypal'])->name('company_paypal');
+    Route::get('company/paypal/success',[CompanyController::class,'paypal_success'])->name('company_paypal_success');
+    Route::get('company/paypal/cancel',[CompanyController::class,'paypal_cancel'])->name('company_paypal_cancel');
+
+    Route::post('company/stripe/payment',[CompanyController::class,'stripe'])->name('company_stripe');
+    Route::get('company/stripe/success',[CompanyController::class,'stripe_success'])->name('company_stripe_success');
+    Route::get('company/stripe/cancel',[CompanyController::class,'stripe_cancel'])->name('company_stripe_cancel');
 });
 
 /*....Candidate with Middleware......*/
 
 Route::middleware(['candidate:candidate'])->group(function(){
-    Route::get('company/dashboard', [CandidateDashboardController::class, 'dashboard'])->name('candidate_dashboard');
+    Route::get('candidate/dashboard', [CandidateDashboardController::class, 'dashboard'])->name('candidate_dashboard');
 });
 
 
