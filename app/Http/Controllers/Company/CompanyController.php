@@ -16,6 +16,12 @@ class CompanyController extends Controller
     public function dashboard(){
         return view('company.dashboard');
     }
+
+    public function orders(){
+        $orders = Order::with('rPackage')->orderBy('id', 'desc')->where('company_id',Auth::guard('company')->user()->id)->get();
+        return view('company.order',compact('orders'));
+    }
+
     public function make_payment(){
         $current_plan = Order::with('rPackage')->where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
         $packages = Package::get();
