@@ -30,11 +30,12 @@
 
 
             <li class="nav-item dropdown">
-                <a href="{{ Request::is('admin/job_category/view')||Request::is('admin/job_location/view') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Job Section</span></a>
+                <a href="{{ Request::is('admin/job_category/view/*')||Request::is('admin/job_location/view/*')||Request::is('/admin/job_type/view/*') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Job Section</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/job_category/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category_view') }}"><i class="fas fa-angle-right"></i> Job Category</a></li>
+                    <li class="{{ Request::is('admin/job_category/view/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category_view') }}"><i class="fas fa-angle-right"></i> Job Category</a></li>
 
-                    <li class="{{ ('/admin/job_location/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_location_view') }}"><i class="fas fa-angle-right"></i> Job Location</a></li>
+                    <li class="{{ Request::is('/admin/job_location/view/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_location_view') }}"><i class="fas fa-angle-right"></i> Job Location</a></li>
+                    <li class="{{ Request::is('/admin/job_type/view/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_type_view') }}"><i class="fas fa-angle-right"></i> Job Type</a></li>
                 </ul>
             </li>
 

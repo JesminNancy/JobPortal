@@ -40,27 +40,11 @@
                                                 <option value="">
                                                     {{ $home_page->job_location }}
                                                 </option>
-                                                <option value="">
-                                                    Australia
+                                                @foreach ($all_job_locations as $item )
+                                                <option value="{{ $item->id }}">
+                                                    {{ $item->name }}
                                                 </option>
-                                                <option value="">
-                                                    Bangladesh
-                                                </option>
-                                                <option value="">
-                                                    Canada
-                                                </option>
-                                                <option value="">
-                                                    China
-                                                </option>
-                                                <option value="">
-                                                    India
-                                                </option>
-                                                <option value="">
-                                                    United Kingdom
-                                                </option>
-                                                <option value="">
-                                                    United States
-                                                </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -73,7 +57,7 @@
                                                 <option value="">
                                                     {{ $home_page->job_category }}
                                                 </option>
-                                                @foreach ($job_categories as $item )
+                                                @foreach ($all_job_categories as $item )
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                 @endforeach
                                             </select>
@@ -114,7 +98,7 @@
             </div>
         </div>
         <div class="row">
-        @foreach ($job_categories as $item)
+        @foreach ($all_job_categories as $item)
             <div class="col-md-4">
                 <div class="item">
                     <div class="icon">
@@ -432,16 +416,16 @@
 @endif
 
 
-{{-- @if($home_page->testimonial_status == 'Show') --}}
+@if($home_page->testimonial_status == 'Show')
 <div
             class="testimonial"
-            style="background-image: url(uploads/banner11.jpg)"
+            style="background-image: url({{ asset('uploads/'. $home_page->testimonial_background) }}"
         >
             <div class="bg"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="main-header">Our Happy Clients</h2>
+                        <h2 class="main-header">{{ $home_page->testimonial_heading }}</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -450,7 +434,7 @@
                             @foreach ($testimonials as $item)
                             <div class="item">
                                 <div class="photo">
-                                    <img src="uploads/t1.jpg" alt="" />
+                                    <img src="{{ asset('uploads/'.$item->photo) }}" alt="" />
                                 </div>
                                 <div class="text">
                                     <h4>{{ $item->name }}</h4>
@@ -468,7 +452,7 @@
                 </div>
             </div>
         </div>
-{{-- @endif --}}
+@endif
 
 
 <div class="blog">

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminJobCategoryPageController;
 use App\Http\Controllers\Admin\AdminJobLocationController;
+use App\Http\Controllers\Admin\AdminJobTypeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminPackageController;
@@ -153,6 +154,13 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/job_location/edit/{id}',[AdminJobLocationController::class,'edit'])->name('admin_job_location_edit');
     Route::post('/admin/job_location/update/{id}',[AdminJobLocationController::class,'update'])->name('admin_job_location_update');
     Route::get('/admin/job_location/delete/{id}',[AdminJobLocationController::class,'delete'])->name('admin_job_location_delete');
+
+    Route::get('/admin/job_type/view',[AdminJobTypeController::class,'index'])->name('admin_job_type_view');
+    Route::get('/admin/job_type/create',[AdminJobTypeController::class,'create'])->name('admin_job_type_create');
+    Route::post('/admin/job_type/store',[AdminJobTypeController::class,'store'])->name('admin_job_type_store');
+    Route::get('/admin/job_type/edit/{id}',[AdminJobTypeController::class,'edit'])->name('admin_job_type_edit');
+    Route::post('/admin/job_type/update/{id}',[AdminJobTypeController::class,'update'])->name('admin_job_type_update');
+    Route::get('/admin/job_type/delete/{id}',[AdminJobTypeController::class,'delete'])->name('admin_job_type_delete');
 
     Route::get('/admin/why-choose/view', [AdminWhyChooseController::class, 'index'])->name('admin_why_choose_item');
     Route::get('/admin/why-choose/create', [AdminWhyChooseController::class, 'create'])->name('admin_why_choose_item_create');

@@ -166,6 +166,40 @@
                                         <!-- Featured Jobs Section End -->
                                     </div>
 
+
+                                    <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab" tabindex="0">
+                                        <!-- Testimonial Section Start -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="mb-4">
+                                                    <label class="form-label">Heading *</label>
+                                                    <input type="text" class="form-control" name="testimonial_heading" value="{{ $home_page->testimonial_heading }}">
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Existing Background *</label>
+                                                    <div>
+                                                        <img src="{{ asset('uploads/'.$home_page->testimonial_background) }}" alt="" class="w_300">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Change Background *</label>
+                                                    <div>
+                                                        <input type="file" class="form-control mt_10" name="testimonial_background">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <label class="form-label">Status *</label>
+                                                    <select name="testimonial_status" class="form-control select2">
+                                                        <option value="Show" @if($home_page->testimonial_status == 'Show') selected @endif>Show</option>
+                                                        <option value="Hide" @if($home_page->testimonial_status == 'Hide') selected @endif>Hide</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Testimonial Section End -->
+                                    </div>
+
+
                                     <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab" tabindex="0">
                                         <!-- Blog Section Start -->
                                         <div class="row">
