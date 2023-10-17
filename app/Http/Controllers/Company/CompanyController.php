@@ -22,6 +22,10 @@ class CompanyController extends Controller
         return view('company.order',compact('orders'));
     }
 
+    public function create_job(){
+        
+    }
+
     public function make_payment(){
         $current_plan = Order::with('rPackage')->where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
         $packages = Package::get();

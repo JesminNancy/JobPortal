@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminFqaPageController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminJobCategoryPageController;
+use App\Http\Controllers\Admin\AdminJobLocationController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminPackageController;
@@ -68,6 +69,7 @@ Route::middleware(['company:company'])->group(function(){
     Route::get('company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
     Route::get('/company/make-payment', [CompanyController::class, 'make_payment'])->name('company_make_payment');
     Route::get('/company/orders', [CompanyController::class, 'orders'])->name('company_orders');
+    Route::get('/company/create_job', [CompanyController::class, 'create_job'])->name('company_jobs_create');
     Route::post('company/paypal/payment',[CompanyController::class,'paypal'])->name('company_paypal');
     Route::get('company/paypal/success',[CompanyController::class,'paypal_success'])->name('company_paypal_success');
     Route::get('company/paypal/cancel',[CompanyController::class,'paypal_cancel'])->name('company_paypal_cancel');
@@ -144,6 +146,13 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/job_category/edit/{id}',[AdminJobCategoryController::class,'edit'])->name('admin_job_category_edit');
     Route::post('/admin/job_category/update/{id}',[AdminJobCategoryController::class,'update'])->name('admin_job_category_update');
     Route::get('/admin/job_category/delete/{id}',[AdminJobCategoryController::class,'delete'])->name('admin_job_category_delete');
+
+    Route::get('/admin/job_location/view',[AdminJobLocationController::class,'index'])->name('admin_job_location_view');
+    Route::get('/admin/job_location/create',[AdminJobLocationController::class,'create'])->name('admin_job_location_create');
+    Route::post('/admin/job_location/store',[AdminJobLocationController::class,'store'])->name('admin_job_location_store');
+    Route::get('/admin/job_location/edit/{id}',[AdminJobLocationController::class,'edit'])->name('admin_job_location_edit');
+    Route::post('/admin/job_location/update/{id}',[AdminJobLocationController::class,'update'])->name('admin_job_location_update');
+    Route::get('/admin/job_location/delete/{id}',[AdminJobLocationController::class,'delete'])->name('admin_job_location_delete');
 
     Route::get('/admin/why-choose/view', [AdminWhyChooseController::class, 'index'])->name('admin_why_choose_item');
     Route::get('/admin/why-choose/create', [AdminWhyChooseController::class, 'create'])->name('admin_why_choose_item_create');
