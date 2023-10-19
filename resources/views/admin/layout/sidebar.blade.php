@@ -40,10 +40,11 @@
                 </ul>
             </li>
 
-            <li class="nav-item dropdown {{ Request::is('admin/company_location/*') ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ Request::is('admin/company_location/*')||Request::is('admin/company_industry/*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Company Section</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/company_location/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_company_location') }}"><i class="fas fa-angle-right"></i> Company Location</a></li>
+                    <li class="{{ Request::is('admin/company_industry/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_company_industry') }}"><i class="fas fa-angle-right"></i> Company Industry</a></li>
                 </ul>
             </li>
 
