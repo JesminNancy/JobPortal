@@ -29,15 +29,20 @@
             </li>
 
 
-            <li class="nav-item dropdown">
-                <a href="{{ Request::is('admin/job_category/view/*')||Request::is('admin/job_location/view/*')||Request::is('/admin/job_type/view/*') ? 'active' : '' }}" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Job Section</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ Request::is('admin/job_category/view/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category_view') }}"><i class="fas fa-angle-right"></i> Job Category</a></li>
 
-                    <li class="{{ Request::is('/admin/job_location/view/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_location_view') }}"><i class="fas fa-angle-right"></i> Job Location</a></li>
-                    <li class="{{ Request::is('/admin/job_type/view/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_type_view') }}"><i class="fas fa-angle-right"></i> Job Type</a></li>
+            <li class="nav-item dropdown {{ Request::is('admin/job-category/*')||Request::is('admin/job-location/*')||Request::is('admin/job-type/*')||Request::is('admin/job-experience/*')||Request::is('admin/job-gender/*')||Request::is('admin/job-salary-range/*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Job Section</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/job-category/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_category') }}"><i class="fas fa-angle-right"></i> Job Category</a></li>
+                    <li class="{{ Request::is('admin/job-location/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_location') }}"><i class="fas fa-angle-right"></i> Job Location</a></li>
+                    <li class="{{ Request::is('admin/job-type/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_type') }}"><i class="fas fa-angle-right"></i> Job Type</a></li>
+                    <li class="{{ Request::is('admin/job-experience/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_experience') }}"><i class="fas fa-angle-right"></i> Job Experience</a></li>
+                    {{-- <li class="{{ Request::is('admin/job-gender/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_gender') }}"><i class="fas fa-angle-right"></i> Job Gender</a></li>
+                    <li class="{{ Request::is('admin/job-salary-range/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_job_salary_range') }}"><i class="fas fa-angle-right"></i> Job Salary Range</a></li> --}}
                 </ul>
             </li>
+
+
 
             <li class="{{ Request::is('admin/package/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_package') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Packages"><i class="fas fa-hand-point-right"></i> <span>Packages</span></a></li>
 

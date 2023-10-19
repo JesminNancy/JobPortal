@@ -23,7 +23,7 @@ class AdminJobLocationController extends Controller
         $obj = new JobLocation();
         $obj->name = $request->name;
         $obj->save();
-        return redirect()->route('admin_job_location_view')->with('success','Data is saved successfully');
+        return redirect()->route('admin_job_location')->with('success','Data is saved successfully');
     }
     public function edit($id){
         $single_job_location = JobLocation::where('id',$id)->first();
@@ -37,10 +37,10 @@ class AdminJobLocationController extends Controller
         ]);
         $obj->name = $request->name;
         $obj->update();
-        return redirect()->route('admin_job_location_view')->with('success','Data is Updated successfully');
+        return redirect()->route('admin_job_location')->with('success','Data is Updated successfully');
     }
     public function delete($id){
         JobLocation::where('id',$id)->delete();
-        return redirect()->route('admin_job_location_view')->with('success','Data is Deleted successfully');
+        return redirect()->route('admin_job_location')->with('success','Data is Deleted successfully');
     }
 }

@@ -25,7 +25,7 @@ class AdminJobCategoryController extends Controller
         $obj->name = $request->name;
         $obj->icon = $request->icon;
         $obj->save();
-        return redirect()->route('admin_job_category_view')->with('success','Data is saved successfully');
+        return redirect()->route('admin_job_category')->with('success','Data is saved successfully');
     }
     public function edit($id){
         $single_job_category = JobCategory::where('id',$id)->first();
@@ -41,10 +41,10 @@ class AdminJobCategoryController extends Controller
         $obj->name = $request->name;
         $obj->icon = $request->icon;
         $obj->update();
-        return redirect()->route('admin_job_category_view')->with('success','Data is Updated successfully');
+        return redirect()->route('admin_job_category')->with('success','Data is Updated successfully');
     }
     public function delete($id){
         JobCategory::where('id',$id)->delete();
-        return redirect()->route('admin_job_category_view')->with('success','Data is Deleted successfully');
+        return redirect()->route('admin_job_category')->with('success','Data is Deleted successfully');
     }
 }

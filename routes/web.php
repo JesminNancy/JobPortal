@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminFqaPageController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminJobCategoryPageController;
+use App\Http\Controllers\Admin\AdminJobExperienceController;
 use App\Http\Controllers\Admin\AdminJobLocationController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -141,26 +142,33 @@ Route::middleware(['admin:admin'])->group(function(){
     Route::get('/admin/blog_page',[AdminBlogPageController::class,'index'])->name('admin_blog_page');
     Route::post('/admin/blog_page/update',[AdminBlogPageController::class,'update'])->name('admin_blog_page_update');
 
-    Route::get('/admin/job_category/view',[AdminJobCategoryController::class,'index'])->name('admin_job_category_view');
+    Route::get('/admin/job_category/view',[AdminJobCategoryController::class,'index'])->name('admin_job_category');
     Route::get('/admin/job_category/create',[AdminJobCategoryController::class,'create'])->name('admin_job_category_create');
     Route::post('/admin/job_category/store',[AdminJobCategoryController::class,'store'])->name('admin_job_category_store');
     Route::get('/admin/job_category/edit/{id}',[AdminJobCategoryController::class,'edit'])->name('admin_job_category_edit');
     Route::post('/admin/job_category/update/{id}',[AdminJobCategoryController::class,'update'])->name('admin_job_category_update');
     Route::get('/admin/job_category/delete/{id}',[AdminJobCategoryController::class,'delete'])->name('admin_job_category_delete');
 
-    Route::get('/admin/job_location/view',[AdminJobLocationController::class,'index'])->name('admin_job_location_view');
-    Route::get('/admin/job_location/create',[AdminJobLocationController::class,'create'])->name('admin_job_location_create');
-    Route::post('/admin/job_location/store',[AdminJobLocationController::class,'store'])->name('admin_job_location_store');
-    Route::get('/admin/job_location/edit/{id}',[AdminJobLocationController::class,'edit'])->name('admin_job_location_edit');
-    Route::post('/admin/job_location/update/{id}',[AdminJobLocationController::class,'update'])->name('admin_job_location_update');
-    Route::get('/admin/job_location/delete/{id}',[AdminJobLocationController::class,'delete'])->name('admin_job_location_delete');
+    Route::get('/admin/job-location/view', [AdminJobLocationController::class, 'index'])->name('admin_job_location');
+    Route::get('/admin/job-location/create', [AdminJobLocationController::class, 'create'])->name('admin_job_location_create');
+    Route::post('/admin/job-location/store', [AdminJobLocationController::class, 'store'])->name('admin_job_location_store');
+    Route::get('/admin/job-location/edit/{id}', [AdminJobLocationController::class, 'edit'])->name('admin_job_location_edit');
+    Route::post('/admin/job-location/update/{id}', [AdminJobLocationController::class, 'update'])->name('admin_job_location_update');
+    Route::get('/admin/job-location/delete/{id}', [AdminJobLocationController::class, 'delete'])->name('admin_job_location_delete');
 
-    Route::get('/admin/job_type/view',[AdminJobTypeController::class,'index'])->name('admin_job_type_view');
-    Route::get('/admin/job_type/create',[AdminJobTypeController::class,'create'])->name('admin_job_type_create');
-    Route::post('/admin/job_type/store',[AdminJobTypeController::class,'store'])->name('admin_job_type_store');
-    Route::get('/admin/job_type/edit/{id}',[AdminJobTypeController::class,'edit'])->name('admin_job_type_edit');
-    Route::post('/admin/job_type/update/{id}',[AdminJobTypeController::class,'update'])->name('admin_job_type_update');
-    Route::get('/admin/job_type/delete/{id}',[AdminJobTypeController::class,'delete'])->name('admin_job_type_delete');
+    Route::get('/admin/job-type/view', [AdminJobTypeController::class, 'index'])->name('admin_job_type');
+    Route::get('/admin/job-type/create', [AdminJobTypeController::class, 'create'])->name('admin_job_type_create');
+    Route::post('/admin/job-type/store', [AdminJobTypeController::class, 'store'])->name('admin_job_type_store');
+    Route::get('/admin/job-type/edit/{id}', [AdminJobTypeController::class, 'edit'])->name('admin_job_type_edit');
+    Route::post('/admin/job-type/update/{id}', [AdminJobTypeController::class, 'update'])->name('admin_job_type_update');
+    Route::get('/admin/job-type/delete/{id}', [AdminJobTypeController::class, 'delete'])->name('admin_job_type_delete');
+
+    Route::get('/admin/job-experience/view', [AdminJobExperienceController::class, 'index'])->name('admin_job_experience');
+    Route::get('/admin/job-experience/create', [AdminJobExperienceController::class, 'create'])->name('admin_job_experience_create');
+    Route::post('/admin/job-experience/store', [AdminJobExperienceController::class, 'store'])->name('admin_job_experience_store');
+    Route::get('/admin/job-experience/edit/{id}', [AdminJobExperienceController::class, 'edit'])->name('admin_job_experience_edit');
+    Route::post('/admin/job-experience/update/{id}', [AdminJobExperienceController::class, 'update'])->name('admin_job_experience_update');
+    Route::get('/admin/job-experience/delete/{id}', [AdminJobExperienceController::class, 'delete'])->name('admin_job_experience_delete');
 
     Route::get('/admin/why-choose/view', [AdminWhyChooseController::class, 'index'])->name('admin_why_choose_item');
     Route::get('/admin/why-choose/create', [AdminWhyChooseController::class, 'create'])->name('admin_why_choose_item_create');

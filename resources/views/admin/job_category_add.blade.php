@@ -3,7 +3,7 @@
 
 @section('button')
 <div class="ml-auto">
-    <a href="{{ route('admin_job_category_view') }}" class="btn btn-primary"><i class="fas fa-plus"></i>Show All</a>
+    <a href="{{ route('admin_job_category') }}" class="btn btn-primary"><i class="fas fa-plus"></i>Show All</a>
 </div>
 @endsection
 @section('main_content')

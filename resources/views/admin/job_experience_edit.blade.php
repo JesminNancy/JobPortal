@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
-@section('heading','Add Job Type')
+@section('heading','Edit Job Type')
 
 @section('button')
 <div class="ml-auto">
-    <a href="{{ route('admin_job_type') }}" class="btn btn-primary"><i class="fas fa-plus"></i>Show All</a>
+    <a href="{{ route('admin_job_experience') }}" class="btn btn-primary"><i class="fas fa-plus"></i>Show All</a>
 </div>
 @endsection
 @section('main_content')
@@ -12,14 +12,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_job_type_store') }}" method="post">
+                    <form action="{{ route('admin_job_experience_update',$single_job_experience->id) }}" method="post">
                         @csrf
                         <div class="form-group mb-3">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="">
+                            <input type="text" class="form-control" name="name" value="{{ $single_job_experience->name }}">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
@@ -28,3 +28,4 @@
     </div>
 </div>
 @endsection
+

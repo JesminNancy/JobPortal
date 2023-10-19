@@ -23,7 +23,7 @@ class AdminJobTypeController extends Controller
         $obj = new JobType();
         $obj->name = $request->name;
         $obj->save();
-        return redirect()->route('admin_job_type_view')->with('success','Data is saved successfully');
+        return redirect()->route('admin_job_type')->with('success','Data is saved successfully');
     }
     public function edit($id){
         $single_job_type = JobType::where('id',$id)->first();
@@ -37,10 +37,10 @@ class AdminJobTypeController extends Controller
         ]);
         $obj->name = $request->name;
         $obj->update();
-        return redirect()->route('admin_job_type_view')->with('success','Data is Updated successfully');
+        return redirect()->route('admin_job_type')->with('success','Data is Updated successfully');
     }
     public function delete($id){
         JobType::where('id',$id)->delete();
-        return redirect()->route('admin_job_type_view')->with('success','Data is Deleted successfully');
+        return redirect()->route('admin_job_type')->with('success','Data is Deleted successfully');
     }
 }
