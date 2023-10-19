@@ -45,6 +45,7 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/company_location/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_company_location') }}"><i class="fas fa-angle-right"></i> Company Location</a></li>
                     <li class="{{ Request::is('admin/company_industry/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_company_industry') }}"><i class="fas fa-angle-right"></i> Company Industry</a></li>
+                    <li class="{{ Request::is('admin/company_size/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_company_size') }}"><i class="fas fa-angle-right"></i> Company Size</a></li>
                 </ul>
             </li>
 
