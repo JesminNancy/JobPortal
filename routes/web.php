@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminJobExperienceController;
 use App\Http\Controllers\Admin\AdminJobLocationController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
 use App\Http\Controllers\Admin\AdminJobGenderController;
+use App\Http\Controllers\Admin\AdminJobSalaryRangeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminOtherPageController;
 use App\Http\Controllers\Admin\AdminPackageController;
