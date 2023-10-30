@@ -87,6 +87,9 @@ Route::middleware(['company:company'])->group(function(){
     Route::post('company/video/submit', [CompanyController::class, 'videos_submit'])->name('company_video_submit');
     Route::get('company/video/delete/{id}', [CompanyController::class, 'video_delete'])->name('company_video_delete');
 
+    Route::get('company/edit-password', [CompanyController::class, 'edit_password'])->name('company_edit_password');
+    Route::post('company/edit-password/submit', [CompanyController::class, 'edit_password_submit'])->name('company_edit_password_submit');
+
     Route::get('/company/create_job', [CompanyController::class, 'create_job'])->name('company_jobs_create');
     Route::post('company/paypal/payment',[CompanyController::class,'paypal'])->name('company_paypal');
     Route::get('company/paypal/success',[CompanyController::class,'paypal_success'])->name('company_paypal_success');

@@ -13,9 +13,10 @@ use App\Models\CompanyPhoto;
 use App\Models\CompanyVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\validation\Rule;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
-use stripe;
+
 
 
 class CompanyController extends Controller
@@ -127,6 +128,9 @@ class CompanyController extends Controller
             return redirect()->back()->with('error','Maximum photos are uploaded, you must have upgrade your package if you want to add more photo');
 
         }
+        if(date('Y-m-d') > $orders_data->expire_date) {
+            return redirect()->back()->with('error', 'Your package is expired!');
+        }
         $request->validate([
             'photo' => 'required|image|mimes:jpg,jpeg,png,gif'
         ]);
@@ -180,6 +184,9 @@ class CompanyController extends Controller
             return redirect()->back()->with('error','Maximum videos are uploaded, you must have upgrade your package if you want to add more video');
 
         }
+        if(date('Y-m-d') > $orders_data->expire_date) {
+            return redirect()->back()->with('error', 'Your package is expired!');
+        }
         $request->validate([
             'video_id' => 'required'
         ]);
@@ -196,6 +203,21 @@ class CompanyController extends Controller
     public function video_delete($id){
         CompanyVideo::where('id',$id)->delete();
         return redirect()->back()->with('success', 'Video is deleted successfully.');
+    }
+
+    public function edit_password(){
+        return view('company.company_edit_password');
+    }
+    public function edit_password_submit(Request $request){
+        $request->validate([
+            'password' => 'required',
+            'retype_password' => 'required|same:password'
+        ]);
+        $obj = Company::where('id',Auth::guard('company')->user()->id)->first();
+        $obj->password = Hash::make($request->password);
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Password is updated successfully.');
     }
 
     public function create_job(){
