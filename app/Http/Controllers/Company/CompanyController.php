@@ -10,6 +10,7 @@ use App\Models\CompanyIndustry;
 use App\Models\CompanySize;
 use App\Models\Company;
 use App\Models\CompanyPhoto;
+use App\Models\CompanyVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\validation\Rule;
@@ -113,6 +114,7 @@ class CompanyController extends Controller
         return view('company.company_photo',compact('company_photos'));
     }
 
+
     public function photos_submit(Request $request){
         $orders_data = Order::where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
 
@@ -148,6 +150,54 @@ class CompanyController extends Controller
         return redirect()->back()->with('success', 'Photo is deleted successfully.');
 
     }
+
+    public function videos(){
+
+        $orders_data = Order::where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
+
+        if(!$orders_data){
+            return redirect()->back()->with('error','You must have to buy a package first to access this page');
+        }
+
+        $package_data = Package::where('id',$orders_data->package_id)->first();
+
+        if($package_data->total_allowed_videos == 0){
+            return redirect()->back()->with('error','Your current package does not allow to access the photo');
+        }
+
+        $videos = CompanyVideo::where('company_id',Auth::guard('company')->user()->id)->get();
+        return view('company.company_video',compact('videos'));
+    }
+    public function videos_submit(Request $request){
+        $orders_data = Order::where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
+
+        $package_data = Package::where('id',$orders_data->package_id)->first();
+
+        $existing_video = CompanyVideo::where('company_id',Auth::guard('company')->user()->id)->count();
+
+        if($package_data->total_allowed_videos == $existing_video){
+
+            return redirect()->back()->with('error','Maximum videos are uploaded, you must have upgrade your package if you want to add more video');
+
+        }
+        $request->validate([
+            'video_id' => 'required'
+        ]);
+
+        $obj = new CompanyVideo();
+
+        $obj->company_id = Auth::guard('company')->user()->id;
+        $obj->video_id = $request->video_id;
+        $obj->save();
+
+        return redirect()->back()->with('success', 'Video is saved successfully.');
+    }
+
+    public function video_delete($id){
+        CompanyVideo::where('id',$id)->delete();
+        return redirect()->back()->with('success', 'Video is deleted successfully.');
+    }
+
     public function create_job(){
 
     }

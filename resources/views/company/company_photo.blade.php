@@ -46,6 +46,13 @@ style="background-image: url('uploads/banner.jpg')"
 
             <h4 class="mt-4">Existing Photos</h4>
             <div class="photo-all">
+                @if($company_photos->count() == 0)
+                <div class="row">
+                    <div class="col-md-12 text-danger">
+                        No Photo is Found
+                    </div>
+                </div>
+                @endif
                 <div class="row">
                     @foreach($company_photos as $item)
                     <div class="col-md-6 col-lg-3 mt-1">
