@@ -78,7 +78,9 @@ Route::middleware(['company:company'])->group(function(){
     Route::get('/company/orders', [CompanyController::class, 'orders'])->name('company_orders');
     Route::get('company/edit-profile', [CompanyController::class, 'edit_profile'])->name('company_edit_profile');
     Route::post('company/edit-profile/update', [CompanyController::class, 'edit_profile_update'])->name('company_edit_profile_update');
-
+    Route::get('company/photos', [CompanyController::class, 'photos'])->name('company_photos');
+    Route::post('company/photo/submit', [CompanyController::class, 'photos_submit'])->name('company_photo_submit');
+    Route::get('company/photo/delete/{id}', [CompanyController::class, 'photo_delete'])->name('company_photo_delete');
 
     Route::get('/company/create_job', [CompanyController::class, 'create_job'])->name('company_jobs_create');
     Route::post('company/paypal/payment',[CompanyController::class,'paypal'])->name('company_paypal');

@@ -14,9 +14,9 @@
     {{-- <li class="list-group-item  Request::is('company/jobs') ? 'active' : ''  }}">
         <a href="{{ route('company_jobs') }}">All Jobs</a>
     </li> --}}
-    {{-- <li class="list-group-item {{ Request::is('company/photos') ? 'active' : '' }}">
+    <li class="list-group-item {{ Request::is('company/photos') ? 'active' : '' }}">
         <a href="{{ route('company_photos') }}">Photos</a>
-    </li> --}}
+    </li>
     {{-- <li class="list-group-item {{ Request::is('company/videos') ? 'active' : '' }}">
         <a href="{{ route('company_videos') }}">Videos</a>
     </li> --}}
