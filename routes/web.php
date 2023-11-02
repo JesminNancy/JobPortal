@@ -91,6 +91,10 @@ Route::middleware(['company:company'])->group(function(){
     Route::post('company/edit-password/submit', [CompanyController::class, 'edit_password_submit'])->name('company_edit_password_submit');
 
     Route::get('/company/create_job', [CompanyController::class, 'create_job'])->name('company_jobs_create');
+    Route::post('/company/create_job_submit', [CompanyController::class, 'create_job_submit'])->name('company_jobs_create_submit');
+
+    Route::get('/company/jobs', [CompanyController::class, 'jobs'])->name('company_jobs');
+
     Route::post('company/paypal/payment',[CompanyController::class,'paypal'])->name('company_paypal');
     Route::get('company/paypal/success',[CompanyController::class,'paypal_success'])->name('company_paypal_success');
     Route::get('company/paypal/cancel',[CompanyController::class,'paypal_cancel'])->name('company_paypal_cancel');

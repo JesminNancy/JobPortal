@@ -11,6 +11,13 @@ use App\Models\CompanySize;
 use App\Models\Company;
 use App\Models\CompanyPhoto;
 use App\Models\CompanyVideo;
+use App\Models\JobLocation;
+use App\Models\JobGender;
+use App\Models\JobExperience;
+use App\Models\JobType;
+use App\Models\JobSalaryRange;
+use App\Models\JobCategory;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -220,10 +227,6 @@ class CompanyController extends Controller
         return redirect()->back()->with('success', 'Password is updated successfully.');
     }
 
-    public function create_job(){
-
-    }
-
     public function make_payment(){
         $current_plan = Order::with('rPackage')->where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
         $packages = Package::get();
@@ -372,5 +375,82 @@ class CompanyController extends Controller
     {
         return redirect()->route('company_make_payment')->with('error', 'Payment is cancelled!');
     }
+    public function create_job()
+    {
+        $orders_data = Order::where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
+        if(!$orders_data){
+            return redirect()->back()->with('error','You must have to buy a package first to access this page');
+        }
+        // if(date('Y-m-d') > $orders_data->expire_date) {
+        //     return redirect()->back()->with('error', 'Your package is expired!');
+        // }
 
+        // Check if a person has access to this page under the current package
+        $package_data = Package::where('id',$orders_data->package_id)->first();
+
+        if($package_data->total_allowed_job == 0) {
+            return redirect()->back()->with('error', 'Your current package does not allow to access the job section');
+        }
+
+    // How many jobs this company posted
+    $total_job_posted = Job::where('company_id',Auth::guard('company')->user()->id)->count();
+        if($package_data->total_allowed_job == $total_job_posted){
+            return redirect()->back()->with('error','You already have posted the maximum number of allwed jobs');
+        }
+
+        $job_categories = JobCategory::orderBy('name','asc')->get();
+        $job_locations = JobLocation::orderBy('name','asc')->get();
+        $job_types = JobType::orderBy('name','asc')->get();
+        $job_experiences = JobExperience::orderBy('id','asc')->get();
+        $job_genders = JobGender::orderBy('id','asc')->get();
+        $job_salary_ranges = JobSalaryRange::orderBy('id','asc')->get();
+        return view('company.create_job',compact('job_categories','job_locations','job_experiences','job_types','job_genders','job_salary_ranges'));
+    }
+
+    public function create_job_submit(Request $request){
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'deadline' => 'required',
+            'vacancy'  => 'required'
+        ]);
+
+        $orders_data = Order::where('company_id',Auth::guard('company')->user()->id)->where('currently_active',1)->first();
+        $package_data = Package::where('id',$orders_data->package_id)->first();
+
+        $total_featured_jobs = Job::where('company_id',Auth::guard('company')->user()->id)->where('is_featured',1)->count();
+        if($total_featured_jobs == $package_data->total_allowed_featured_job) {
+            if($request->is_featured == 1) {
+                return redirect()->back()->with('error', 'You already have added the total number of featured jobs');
+            }
+        }
+
+        $jobs = new Job();
+        $jobs->company_id = Auth::guard('company')->user()->id;
+        $jobs->title = $request->title;
+        $jobs->description = $request->description;
+        $jobs->responsibility = $request->responsibility;
+        $jobs->skill = $request->skill;
+        $jobs->education = $request->education;
+        $jobs->benefit = $request->benefit;
+        $jobs->deadline = $request->deadline;
+        $jobs->vacancy = $request->vacancy;
+        $jobs->job_category_id = $request->job_category_id;
+        $jobs->job_location_id = $request->job_location_id;
+        $jobs->job_type_id = $request->job_type_id;
+        $jobs->job_experience_id = $request->job_experience_id;
+        $jobs->job_gender_id = $request->job_gender_id;
+        $jobs->job_salary_range_id = $request->job_salary_range_id;
+        $jobs->map_code = $request->map_code;
+        $jobs->is_featured = $request->is_featured;
+        $jobs->is_urgent = $request->is_urgent;
+        $jobs->save();
+
+        return redirect()->back()->with('success','Job is posted successfully');
+    }
+
+    public function jobs(){
+        return view('company.job');
+    }
 }
