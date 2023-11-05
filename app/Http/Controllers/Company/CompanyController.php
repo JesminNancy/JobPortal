@@ -29,7 +29,10 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 class CompanyController extends Controller
 {
     public function dashboard(){
-        return view('company.dashboard');
+        $total_featured_jobs =Job::where('company_id',Auth::guard('company')->user()->id)->where('is_featured',1)->count();
+        $total_open_jobs = Job::where('company_id',Auth::guard('company')->user()->id)->count();
+        $jobs =Job::with('rJobCategory')->where('company_id',Auth::guard('company')->user()->id)->orderBy('id','desc')->take(2)->get();
+        return view('company.dashboard',compact('jobs','total_featured_jobs','total_open_jobs'));
     }
 
     public function orders(){
@@ -451,6 +454,51 @@ class CompanyController extends Controller
     }
 
     public function jobs(){
-        return view('company.job');
+       $jobs =Job::with('rJobCategory')->where('company_id',Auth::guard('company')->user()->id)->get();
+        return view('company.job',compact('jobs'));
+    }
+    public function jobs_edit($id){
+        $jobs_single = Job::where('id',$id)->first();
+        $job_categories = JobCategory::orderBy('name','asc')->get();
+        $job_locations = JobLocation::orderBy('name','asc')->get();
+        $job_types = JobType::orderBy('name','asc')->get();
+        $job_experiences = JobExperience::orderBy('id','asc')->get();
+        $job_genders = JobGender::orderBy('id','asc')->get();
+        $job_salary_ranges = JobSalaryRange::orderBy('id','asc')->get();
+        return view('company.jobs_edit',compact('jobs_single','job_categories','job_locations','job_experiences','job_types','job_genders','job_salary_ranges'));
+    }
+    public function jobs_update(Request $request,$id){
+        $jobs = Job::where('id',$id)->first();
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'deadline' => 'required',
+            'vacancy'  => 'required'
+        ]);
+        $jobs->title = $request->title;
+        $jobs->description = $request->description;
+        $jobs->responsibility = $request->responsibility;
+        $jobs->skill = $request->skill;
+        $jobs->education = $request->education;
+        $jobs->benefit = $request->benefit;
+        $jobs->deadline = $request->deadline;
+        $jobs->vacancy = $request->vacancy;
+        $jobs->job_category_id = $request->job_category_id;
+        $jobs->job_location_id = $request->job_location_id;
+        $jobs->job_type_id = $request->job_type_id;
+        $jobs->job_experience_id = $request->job_experience_id;
+        $jobs->job_gender_id = $request->job_gender_id;
+        $jobs->job_salary_range_id = $request->job_salary_range_id;
+        $jobs->map_code = $request->map_code;
+        $jobs->is_featured = $request->is_featured;
+        $jobs->is_urgent = $request->is_urgent;
+        $jobs->update();
+
+        return redirect()->back()->with('success','Job is updated successfully');
+
+    }
+    public function jobs_delete($id){
+        Job::where('id',$id)->delete();
+        return redirect()->back('company_jobs')->with('success','Job is deleted successfully');
     }
 }

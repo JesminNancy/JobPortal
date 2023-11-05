@@ -31,19 +31,13 @@ style="background-image: url('uploads/banner.jpg')"
             <div class="row box-items">
                 <div class="col-md-4">
                     <div class="box1">
-                        <h4>12</h4>
+                        <h4>{{ $total_open_jobs }}</h4>
                         <p>Open Jobs</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="box2">
-                        <h4>3</h4>
-                        <p>Pending Jobs</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
                     <div class="box3">
-                        <h4>5</h4>
+                        <h4>{{ $total_featured_jobs }}</h4>
                         <p>Featured Jobs</p>
                     </div>
                 </div>
@@ -55,57 +49,28 @@ style="background-image: url('uploads/banner.jpg')"
                     <tbody>
                         <tr>
                             <th>SL</th>
-                            <th>Job Title</th>
+                            <th>Title</th>
                             <th>Category</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Location</th>
+                            <th>Is Featured?</th>
                         </tr>
+
+                        @foreach($jobs as $item)
                         <tr>
-                            <td>1</td>
-                            <td>Senior Laravel Developer</td>
-                            <td>Web Development</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->rJobCategory->name }}</td>
+                            <td>{{ $item->rJobLocation->name }}</td>
                             <td>
-                                <span class="badge bg-success"
-                                    >Active</span
-                                >
-                            </td>
-                            <td>
-                                <a
-                                    href=""
-                                    class="btn btn-warning btn-sm text-white"
-                                    ><i class="fas fa-edit"></i
-                                ></a>
-                                <a
-                                    href=""
-                                    class="btn btn-danger btn-sm"
-                                    onClick="return confirm('Are you sure?');"
-                                    ><i class="fas fa-trash-alt"></i
-                                ></a>
+                                @if($item->is_featured == 1)
+                                <span class="badge bg-success">Featured</span>
+                                @else
+                                <span class="badge bg-danger">Not Featured</span>
+                                @endif
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>UI/UX Designer</td>
-                            <td>Web Design</td>
-                            <td>
-                                <span class="badge bg-danger"
-                                    >Pending</span
-                                >
-                            </td>
-                            <td>
-                                <a
-                                    href=""
-                                    class="btn btn-warning btn-sm text-white"
-                                    ><i class="fas fa-edit"></i
-                                ></a>
-                                <a
-                                    href=""
-                                    class="btn btn-danger btn-sm"
-                                    onClick="return confirm('Are you sure?');"
-                                    ><i class="fas fa-trash-alt"></i
-                                ></a>
-                            </td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
