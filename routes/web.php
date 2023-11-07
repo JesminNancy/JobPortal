@@ -76,6 +76,7 @@ Route::middleware(['company:company'])->group(function(){
     Route::get('company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
     Route::get('/company/make-payment', [CompanyController::class, 'make_payment'])->name('company_make_payment');
     Route::get('/company/orders', [CompanyController::class, 'orders'])->name('company_orders');
+
     Route::get('company/edit-profile', [CompanyController::class, 'edit_profile'])->name('company_edit_profile');
     Route::post('company/edit-profile/update', [CompanyController::class, 'edit_profile_update'])->name('company_edit_profile_update');
 
@@ -111,10 +112,14 @@ Route::middleware(['company:company'])->group(function(){
 
 Route::middleware(['candidate:candidate'])->group(function(){
     Route::get('candidate/dashboard', [CandidateDashboardController::class, 'dashboard'])->name('candidate_dashboard');
+    Route::get('candidate/edit-profile', [CandidateDashboardController::class, 'edit_profile'])->name('candidate_edit_profile');
+    Route::post('candidate/edit-profile/update', [CandidateDashboardController::class, 'edit_profile_update'])->name('candidate_edit_profile_update');
+    Route::get('candidate/edit-password', [CandidateDashboardController::class, 'edit_password'])->name('candidate_edit_password');
+    Route::post('candidate/edit-password/submit', [CandidateDashboardController::class, 'edit_password_submit'])->name('candidate_edit_password_submit');
 });
 
 
-/* Candidate */
+/* Candidate Without Middleware */
 Route::post('candidate_login_submit', [LoginController::class, 'candidate_login_submit'])->name('candidate_login_submit');
 Route::post('candidate_signup_submit', [SignupController::class, 'candidate_signup_submit'])->name('candidate_signup_submit');
 Route::get('candidate_signup_verify/{token}/{email}', [SignupController::class, 'candidate_signup_verify'])->name('candidate_signup_verify');
