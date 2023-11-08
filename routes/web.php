@@ -132,7 +132,12 @@ Route::middleware(['candidate:candidate'])->group(function(){
     Route::post('/candidate/skill/update/{id}', [CandidateDashboardController::class, 'skill_update'])->name('candidate_skill_update');
     Route::get('/candidate/skill/delete/{id}', [CandidateDashboardController::class, 'skill_delete'])->name('candidate_skill_delete');
 
-
+    Route::get('candidate/experience', [CandidateDashboardController::class, 'experience'])->name('candidate_experience');
+    Route::get('/candidate/create_experience', [CandidateDashboardController::class, 'create_experience'])->name('candidate_experience_create');
+    Route::post('/candidate/create_experience_submit', [CandidateDashboardController::class, 'create_experience_submit'])->name('candidate_experience_create_submit');
+    Route::get('/candidate/experience/edit/{id}', [CandidateDashboardController::class, 'edit_experience'])->name('candidate_experience_edit');
+    Route::post('/candidate/experience/update/{id}', [CandidateDashboardController::class, 'experience_update'])->name('candidate_experience_update');
+    Route::get('/candidate/experience/delete/{id}', [CandidateDashboardController::class, 'experience_delete'])->name('candidate_experience_delete');
 });
 
 
