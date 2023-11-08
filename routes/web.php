@@ -123,6 +123,16 @@ Route::middleware(['candidate:candidate'])->group(function(){
     Route::get('/candidate/education/edit/{id}', [CandidateDashboardController::class, 'edit_education'])->name('candidate_education_edit');
     Route::post('/candidate/education/update/{id}', [CandidateDashboardController::class, 'education_update'])->name('candidate_education_update');
     Route::get('/candidate/education/delete/{id}', [CandidateDashboardController::class, 'education_delete'])->name('candidate_education_delete');
+
+
+    Route::get('candidate/skill', [CandidateDashboardController::class, 'skill'])->name('candidate_skill');
+    Route::get('/candidate/create_skill', [CandidateDashboardController::class, 'create_skill'])->name('candidate_skill_create');
+    Route::post('/candidate/create_skill_submit', [CandidateDashboardController::class, 'create_skill_submit'])->name('candidate_skill_create_submit');
+    Route::get('/candidate/skill/edit/{id}', [CandidateDashboardController::class, 'edit_skill'])->name('candidate_skill_edit');
+    Route::post('/candidate/skill/update/{id}', [CandidateDashboardController::class, 'skill_update'])->name('candidate_skill_update');
+    Route::get('/candidate/skill/delete/{id}', [CandidateDashboardController::class, 'skill_delete'])->name('candidate_skill_delete');
+
+
 });
 
 

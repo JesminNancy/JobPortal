@@ -11,9 +11,9 @@
     <li class="list-group-item {{ Request::is('candidate/education') ? 'active' : '' }}">
         <a href="{{ route('candidate_education') }}">Education</a>
     </li>
-    {{-- <li class="list-group-item {{ Request::is('candidate/skill/view') ? 'active' : '' }}">
+    <li class="list-group-item {{ Request::is('candidate/skill') ? 'active' : '' }}">
         <a href="{{ route('candidate_skill') }}">Skills</a>
-    </li> --}}
+    </li>
     {{-- <li class="list-group-item {{ Request::is('candidate/experience/view') ? 'active' : '' }}">
         <a href="{{ route('candidate_experience') }}">Work Experience</a>
     </li> --}}
