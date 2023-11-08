@@ -91,10 +91,9 @@ Route::middleware(['company:company'])->group(function(){
     Route::get('company/edit-password', [CompanyController::class, 'edit_password'])->name('company_edit_password');
     Route::post('company/edit-password/submit', [CompanyController::class, 'edit_password_submit'])->name('company_edit_password_submit');
 
+    Route::get('/company/jobs', [CompanyController::class, 'jobs'])->name('company_jobs');
     Route::get('/company/create_job', [CompanyController::class, 'create_job'])->name('company_jobs_create');
     Route::post('/company/create_job_submit', [CompanyController::class, 'create_job_submit'])->name('company_jobs_create_submit');
-
-    Route::get('/company/jobs', [CompanyController::class, 'jobs'])->name('company_jobs');
     Route::get('/company/jobs/edit/{id}', [CompanyController::class, 'jobs_edit'])->name('company_jobs_edit');
     Route::post('/company/jobs/update/{id}', [CompanyController::class, 'jobs_update'])->name('company_jobs_update');
     Route::get('/company/jobs/delete/{id}', [CompanyController::class, 'jobs_delete'])->name('company_jobs_delete');
@@ -116,6 +115,14 @@ Route::middleware(['candidate:candidate'])->group(function(){
     Route::post('candidate/edit-profile/update', [CandidateDashboardController::class, 'edit_profile_update'])->name('candidate_edit_profile_update');
     Route::get('candidate/edit-password', [CandidateDashboardController::class, 'edit_password'])->name('candidate_edit_password');
     Route::post('candidate/edit-password/submit', [CandidateDashboardController::class, 'edit_password_submit'])->name('candidate_edit_password_submit');
+
+
+    Route::get('candidate/education', [CandidateDashboardController::class, 'education'])->name('candidate_education');
+    Route::get('/candidate/create_education', [CandidateDashboardController::class, 'create_education'])->name('candidate_education_create');
+    Route::post('/candidate/create_education_submit', [CandidateDashboardController::class, 'create_education_submit'])->name('candidate_education_create_submit');
+    Route::get('/candidate/education/edit/{id}', [CandidateDashboardController::class, 'edit_education'])->name('candidate_education_edit');
+    Route::post('/candidate/education/update/{id}', [CandidateDashboardController::class, 'education_update'])->name('candidate_education_update');
+    Route::get('/candidate/education/delete/{id}', [CandidateDashboardController::class, 'education_delete'])->name('candidate_education_delete');
 });
 
 

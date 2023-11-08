@@ -8,9 +8,9 @@
     {{-- <li class="list-group-item {{ Request::is('candidate/bookmark-view') ? 'active' : '' }}">
         <a href="{{ route('candidate_bookmark_view') }}">Bookmarked Jobs</a>
     </li> --}}
-    {{-- <li class="list-group-item {{ Request::is('candidate/education/view') ? 'active' : '' }}">
+    <li class="list-group-item {{ Request::is('candidate/education') ? 'active' : '' }}">
         <a href="{{ route('candidate_education') }}">Education</a>
-    </li> --}}
+    </li>
     {{-- <li class="list-group-item {{ Request::is('candidate/skill/view') ? 'active' : '' }}">
         <a href="{{ route('candidate_skill') }}">Skills</a>
     </li> --}}
