@@ -17,9 +17,9 @@
     <li class="list-group-item {{ Request::is('candidate/experience') ? 'active' : '' }}">
         <a href="{{ route('candidate_experience') }}">Work Experience</a>
     </li>
-    {{-- <li class="list-group-item {{ Request::is('candidate/award/view') ? 'active' : '' }}">
+    <li class="list-group-item {{ Request::is('candidate/award') ? 'active' : '' }}">
         <a href="{{ route('candidate_award') }}">Awards</a>
-    </li> --}}
+    </li>
     {{-- <li class="list-group-item {{ Request::is('candidate/resume/view') ? 'active' : '' }}">
         <a href="{{ route('candidate_resume') }}">Resume Upload</a>
     </li> --}}

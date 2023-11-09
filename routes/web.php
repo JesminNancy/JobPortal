@@ -138,6 +138,13 @@ Route::middleware(['candidate:candidate'])->group(function(){
     Route::get('/candidate/experience/edit/{id}', [CandidateDashboardController::class, 'edit_experience'])->name('candidate_experience_edit');
     Route::post('/candidate/experience/update/{id}', [CandidateDashboardController::class, 'experience_update'])->name('candidate_experience_update');
     Route::get('/candidate/experience/delete/{id}', [CandidateDashboardController::class, 'experience_delete'])->name('candidate_experience_delete');
+
+    Route::get('candidate/award', [CandidateDashboardController::class, 'award'])->name('candidate_award');
+    Route::get('/candidate/create_award', [CandidateDashboardController::class, 'create_award'])->name('candidate_award_create');
+    Route::post('/candidate/create_award_submit', [CandidateDashboardController::class, 'create_award_submit'])->name('candidate_award_create_submit');
+    Route::get('/candidate/award/edit/{id}', [CandidateDashboardController::class, 'edit_award'])->name('candidate_award_edit');
+    Route::post('/candidate/award/update/{id}', [CandidateDashboardController::class, 'award_update'])->name('candidate_award_update');
+    Route::get('/candidate/award/delete/{id}', [CandidateDashboardController::class, 'award_delete'])->name('candidate_award_delete');
 });
 
 

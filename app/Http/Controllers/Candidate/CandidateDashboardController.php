@@ -9,6 +9,7 @@ use App\Models\Candidate;
 use App\Models\CandidateEducation;
 use App\Models\CandidateSkill;
 use App\Models\CandidateExperience;
+use App\Models\CandidateAward;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\validation\Rule;
 
@@ -268,6 +269,66 @@ class CandidateDashboardController extends Controller
     {
         CandidateExperience::where('id',$id)->delete();
         return redirect()->route('candidate_experience')->with('success', 'Experience is deleted successfully.');
+    }
+
+
+    public function award(){
+        $totalawards = CandidateExperience::where('candidate_id',Auth::guard('candidate')->user()->id)->orderBy('id','desc')->get();
+        return view('candidate.award',compact('totalawards'));
+    }
+
+    public function create_award()
+    {
+        return view('candidate.award_create');
+    }
+
+    public function create_award_submit(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $obj = new CandidateAward();
+        $obj->candidate_id = Auth::guard('candidate')->user()->id;
+        $obj->title = $request->title;
+        $obj->description = $request->description;
+        $obj->date = $request->date;
+        $obj->save();
+
+        return redirect()->route('candidate_award')->with('success', 'Award is added successfully.');
+    }
+
+    public function edit_award($id)
+    {
+        $award_single = CandidateAward::where('id',$id)->first();
+
+        return view('candidate.award_edit', compact('award_single'));
+    }
+
+    public function award_update(Request $request, $id)
+    {
+        $obj = CandidateAward::where('id',$id)->first();
+
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $obj = new CandidateAward();
+        $obj->candidate_id = Auth::guard('candidate')->user()->id;
+        $obj->title = $request->title;
+        $obj->description = $request->description;
+        $obj->date = $request->date;
+        $obj->update();
+
+        return redirect()->route('candidate_award')->with('success', 'Award is updated successfully.');
+    }
+
+    public function award_delete($id)
+    {
+        CandidateAward::where('id',$id)->delete();
+        return redirect()->route('candidate_award')->with('success', 'Award is deleted successfully.');
     }
 
 }
