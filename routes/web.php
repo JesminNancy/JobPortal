@@ -145,6 +145,16 @@ Route::middleware(['candidate:candidate'])->group(function(){
     Route::get('/candidate/award/edit/{id}', [CandidateDashboardController::class, 'edit_award'])->name('candidate_award_edit');
     Route::post('/candidate/award/update/{id}', [CandidateDashboardController::class, 'award_update'])->name('candidate_award_update');
     Route::get('/candidate/award/delete/{id}', [CandidateDashboardController::class, 'award_delete'])->name('candidate_award_delete');
+
+
+    Route::get('/candidate/resume', [CandidateDashboardController::class, 'resume'])->name('candidate_resume');
+    Route::get('/candidate/resume/create', [CandidateDashboardController::class, 'resume_create'])->name('candidate_resume_create');
+    Route::post('/candidate/resume/store', [CandidateDashboardController::class, 'resume_store'])->name('candidate_resume_store');
+    Route::get('/candidate/resume/edit/{id}', [CandidateDashboardController::class, 'resume_edit'])->name('candidate_resume_edit');
+    Route::post('/candidate/resume/update/{id}', [CandidateDashboardController::class, 'resume_update'])->name('candidate_resume_update');
+    Route::get('/candidate/resume/delete/{id}', [CandidateDashboardController::class, 'resume_delete'])->name('candidate_resume_delete');
+
+
 });
 
 
